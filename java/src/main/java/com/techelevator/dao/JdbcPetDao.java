@@ -5,7 +5,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,12 +32,12 @@ public class JdbcPetDao implements PetDao{
     private Pet mapRowToPet(SqlRowSet results){
         Pet pet = new Pet();
         pet.setPetID(results.getInt("pet_id"));
-        pet.setName(results.getString("name"));
+        pet.setPetName(results.getString("pet_name"));
       //  pet.setDOB(results.getDate("DOB").toLocalDate());
         pet.setBreed(results.getString("breed"));
         pet.setColor(results.getString("color"));
         pet.setSex(results.getString("sex"));
-        pet.setStatus(results.getString("status"));
+        pet.setAdoptionStatus(results.getString("adoption_status"));
         pet.setVaccinated(results.getBoolean("is_vaccinated"));
         //pet.setEntryDate(results.getDate("entry_date").toLocalDate());
         //if(results.getDate("adoption_date")==null){
@@ -46,7 +45,7 @@ public class JdbcPetDao implements PetDao{
         //} else {
           //  pet.setAdoptionDate(results.getDate("adoption_date").toLocalDate());
         //}
-        pet.setDescription(results.getString("description"));
+        pet.setPetDescription(results.getString("pet_description"));
 
         return pet;
     }
