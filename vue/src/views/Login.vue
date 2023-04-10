@@ -24,10 +24,13 @@
         <input type="password" id="password" v-model="user.password" required class="passWord"/>
       </div>
       <button type="submit" class="signIn">Sign in</button>
-      <p>
-        <router-link :to="{ name: 'register' }"
-          >Need an account? Sign up.</router-link
+      <p class="registervol">
+        Not registered as a volunteer?
+        <button class="regBtn">
+        <router-link :to="{ name: 'register' }" class="signUp"
+          > Sign up Now!.</router-link
         >
+        </button>
       </p>
     </form>
   </div>
@@ -105,5 +108,25 @@ label {
   padding: 15px 50px;
 }
 
+.registervol{
+  padding-left: 50vh;
+   font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-size: 40px;
+  
+}
+
+.signUp{
+   font-weight: bold;
+   color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.regBtn{
+   border-radius: 16px;
+  background-color: #de854e;
+  padding: 15px 50px;
+}
 
 </style>

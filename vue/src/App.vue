@@ -44,11 +44,18 @@
 .petList {
   padding-left: 75vh;
   padding-right: 75vh;
+  color: white;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
 }
 
 .volunteerList {
   padding-left: 75vh;
   padding-right: 75vh;
+  color: white;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+
 }
 
 html,
