@@ -124,7 +124,7 @@ label {
 }
 
 .regBtn{
-   border-radius: 16px;
+  border-radius: 16px;
   background-color: #de854e;
   padding: 15px 50px;
 }
