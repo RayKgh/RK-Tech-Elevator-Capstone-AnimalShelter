@@ -5,42 +5,42 @@ import java.time.LocalDate;
 
 public class Pet {
     private int petID;
-    private String name;
+    private String petName;
     private LocalDate DOB;
     private String breed;
     private String color;
     private boolean isVaccinated;
     private String sex;
-    private String status;
+    private String adoptionStatus;
     private LocalDate entryDate;
     private LocalDate adoptionDate;
-    private String description;
+    private String petDescription;
 
-    public Pet(int petID, String name, LocalDate DOB, String breed, String color, boolean isVaccinated, String sex, String status, LocalDate entryDate, LocalDate adoptionDate, String description) {
+    public Pet(int petID, String petName, LocalDate DOB, String breed, String color, boolean isVaccinated, String sex, String adoptionStatus, LocalDate entryDate, LocalDate adoptionDate, String petDescription) {
         this.petID = petID;
-        this.name = name;
+        this.petName = petName;
         this.DOB = DOB;
         this.breed = breed;
         this.color = color;
         this.isVaccinated = isVaccinated;
         this.sex = sex;
-        this.status = status;
+        this.adoptionStatus = adoptionStatus;
         this.entryDate = entryDate;
         this.adoptionDate = adoptionDate;
-        this.description = description;
+        this.petDescription = petDescription;
     }
 
     public Pet(){}
 
-    public Pet(int petID, String name, String breed, String color, boolean isVaccinated, String sex, String status, String description) {
+    public Pet(int petID, String petName, String breed, String color, boolean isVaccinated, String sex, String adoptionStatus, String petDescription) {
         this.petID = petID;
-        this.name = name;
+        this.petName = petName;
         this.breed = breed;
         this.color = color;
         this.isVaccinated = isVaccinated;
         this.sex = sex;
-        this.status = status;
-        this.description = description;
+        this.adoptionStatus = adoptionStatus;
+        this.petDescription = petDescription;
     }
 
     public int getPetID() {
@@ -51,12 +51,12 @@ public class Pet {
         this.petID = petID;
     }
 
-    public String getName() {
-        return name;
+    public String getPetName() {
+        return petName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPetName(String petName) {
+        this.petName = petName;
     }
 
     public LocalDate getDOB() {
@@ -99,12 +99,12 @@ public class Pet {
         this.sex = sex;
     }
 
-    public String getStatus() {
-        return status;
+    public String getAdoptionStatus() {
+        return adoptionStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAdoptionStatus(String adoptionStatus) {
+        this.adoptionStatus = adoptionStatus;
     }
 
     public LocalDate getEntryDate() {
@@ -123,11 +123,11 @@ public class Pet {
         this.adoptionDate = adoptionDate;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPetDescription() {
+        return petDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPetDescription(String petDescription) {
+        this.petDescription = petDescription;
     }
 }
