@@ -30,16 +30,16 @@ CREATE TABLE application (
 
 CREATE TABLE pets(
 	pet_id SERIAL PRIMARY KEY,
-	pet_name varchar(20) NOT NULL,
+	pet_name varchar(20),
 	DOB date,
-	breed varchar(20) NOT NULL,
-	color varchar(20) NOT NULL,
-	sex varchar(6) NOT NULL,
-	adoption_status varchar(30) NOT NULL,
-	is_vaccinated boolean DEFAULT false NOT NULL,
-	entry_date date DEFAULT NOW(),
-	adoption_date date DEFAULT NULL,
-	pet_description varchar(500) NOT NULL
+	breed varchar(20),
+	color varchar(20) ,
+	sex varchar(6),
+	adoption_status varchar(30),
+	is_vaccinated boolean DEFAULT false,
+	entry_date date,
+	adoption_date date,
+	pet_description varchar(500)
 );
 
 CREATE TABLE photo(

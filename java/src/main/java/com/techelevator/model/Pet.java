@@ -2,6 +2,7 @@ package com.techelevator.model;
 
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Pet {
     private int petID;
@@ -30,17 +31,7 @@ public class Pet {
         this.petDescription = petDescription;
     }
 
-    public Pet(){}
-
-    public Pet(int petID, String petName, String breed, String color, boolean isVaccinated, String sex, String adoptionStatus, String petDescription) {
-        this.petID = petID;
-        this.petName = petName;
-        this.breed = breed;
-        this.color = color;
-        this.isVaccinated = isVaccinated;
-        this.sex = sex;
-        this.adoptionStatus = adoptionStatus;
-        this.petDescription = petDescription;
+    public Pet() {
     }
 
     public int getPetID() {
