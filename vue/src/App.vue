@@ -1,27 +1,38 @@
 <template class="page">
   <div id="app">
-    <div id="nav" class="nav">
-      <router-link v-bind:to="{ name: 'home' }"
-        ><img
-          src="https://i.imgur.com/rBJDZci.png"
-          class="image" /></router-link
-      >&nbsp;|&nbsp;
-      <router-link
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >
-      <button class="adoptBtn">
-      <router-link v-bind:to="{ name: 'adopt' }" class="petList">
-        Adopt</router-link
-      >
-      </button>
-      <button class="volBtn">
-      <router-link v-bind:to="{ name: 'volunteer' }" class="volunteerList">
-        Volunteer
-      </router-link>
-      </button>
-    </div>
+      <div id="nav" class="nav">
+        <router-link v-bind:to="{ name: 'home' }">
+          <img  src="https://i.imgur.com/rBJDZci.png" class="image" />
+        </router-link> &nbsp;&nbsp;
+
+        <ul id="nav-items">
+        
+          <li>
+              <router-link v-bind:to="{ name: 'adopt' }" class="petList">
+                Adopt
+              </router-link>
+          </li>
+          <li>
+              <!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != 'Login'">Login</router-link> -->
+              Login
+          </li>
+          <li>
+            <button class="volBtn">
+                <router-link v-bind:to="{ name: 'volunteer' }" class="volunteerList">
+                  Volunteer
+                </router-link>
+        </button>
+          </li>
+        </ul>
+
+        
+
+        
+        
+        
+
+        
+      </div>
     <router-view />
   </div>
 
@@ -35,26 +46,48 @@
 
 .nav {
   display: flex;
-  border: dashed red;
+  align-items: center;
   justify-content: space-between;
+  height: 130px;
+  padding-left: 20px;
+} 
+
+#nav-items {
+  display: flex;
+  list-style: none;
+  width: 35%;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 30px;
 }
 
+#nav-items li {
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #f2ebe6;
+}
+
+#nav-items a{
+  text-decoration: none;
+}
+
+
+
+
+
 .image {
-  padding: 25px;
-  width: 10vh;
-  height: 10vh;
+  max-height: 100px;
 }
 
 .petList {
   color: white;
   font-weight: bold;
-  font-family: "Poppins", sans-serif;
 }
 
 .volunteerList {
   color: white;
   font-weight: bold;
-  font-family: "Poppins", sans-serif;
 
 }
 
@@ -62,21 +95,24 @@ html,
 body {
   background-image: url("https://i.imgur.com/d534hFp.png");
   background-size: 100%;
-  background-color: #A19581;
+  background-color: #D1CDC7;
   background-repeat: no-repeat;
-}
-.adoptBtn{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 
-  border-radius: 16px;
-  background-color: #de854e;
-  padding: 15px 20px;
-  
 }
 
-.volBtn{
-   border-radius: 16px;
-  background-color: #de854e;
-  padding: 15px 50px;
+button {
+  border-radius: 50px;
+  border: none;
+  padding: 10px 30px;
+   background-color: #de854e;
+  font-size: 25px;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 </style>
 
