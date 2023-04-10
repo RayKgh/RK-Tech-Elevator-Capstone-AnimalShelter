@@ -31,13 +31,13 @@ CREATE TABLE application (
 CREATE TABLE pets(
 	pet_id SERIAL PRIMARY KEY,
 	name varchar(20) NOT NULL,
-	DOB date NOT NULL,
+	DOB date,
 	breed varchar(20) NOT NULL,
 	color varchar(20) NOT NULL,
-	sex varchar(6) NOt NULL,
+	sex varchar(6) NOT NULL,
 	status varchar(30) NOT NULL,
 	is_vaccinated boolean DEFAULT false NOT NULL,
-	entry_date date DEFAULT NOW() NOT NULL,
+	entry_date date DEFAULT NOW(),
 	adoption_date date DEFAULT NULL,
 	description varchar(500) NOT NULL
 );
