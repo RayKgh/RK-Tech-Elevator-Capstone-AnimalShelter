@@ -8,6 +8,13 @@ export default {
 
   register(user) {
     return axios.post('/register', user)
-  }
+  },
+
+  // adopt() {
+  //   return axios.post('/adopt', )
+  // }
+
+  
+  
 
 }
