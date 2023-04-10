@@ -1,21 +1,22 @@
 package com.techelevator.model;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 
 public class Pet {
     private int petID;
     private String name;
-    private Date DOB;
+    private LocalDate DOB;
     private String breed;
     private String color;
     private boolean isVaccinated;
     private String sex;
     private String status;
-    private Date entryDate;
-    private Date adoptionDate;
+    private LocalDate entryDate;
+    private LocalDate adoptionDate;
     private String description;
 
-    public Pet(int petID, String name, Date DOB, String breed, String color, boolean isVaccinated, String sex, String status, Date entryDate, Date adoptionDate, String description) {
+    public Pet(int petID, String name, LocalDate DOB, String breed, String color, boolean isVaccinated, String sex, String status, LocalDate entryDate, LocalDate adoptionDate, String description) {
         this.petID = petID;
         this.name = name;
         this.DOB = DOB;
@@ -30,6 +31,17 @@ public class Pet {
     }
 
     public Pet(){}
+
+    public Pet(int petID, String name, String breed, String color, boolean isVaccinated, String sex, String status, String description) {
+        this.petID = petID;
+        this.name = name;
+        this.breed = breed;
+        this.color = color;
+        this.isVaccinated = isVaccinated;
+        this.sex = sex;
+        this.status = status;
+        this.description = description;
+    }
 
     public int getPetID() {
         return petID;
@@ -47,11 +59,11 @@ public class Pet {
         this.name = name;
     }
 
-    public Date getDOB() {
+    public LocalDate getDOB() {
         return DOB;
     }
 
-    public void setDOB(Date DOB) {
+    public void setDOB(LocalDate DOB) {
         this.DOB = DOB;
     }
 
@@ -95,19 +107,19 @@ public class Pet {
         this.status = status;
     }
 
-    public Date getEntryDate() {
+    public LocalDate getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(Date entryDate) {
+    public void setEntryDate(LocalDate entryDate) {
         this.entryDate = entryDate;
     }
 
-    public Date getAdoptionDate() {
+    public LocalDate getAdoptionDate() {
         return adoptionDate;
     }
 
-    public void setAdoptionDate(Date adoptionDate) {
+    public void setAdoptionDate(LocalDate adoptionDate) {
         this.adoptionDate = adoptionDate;
     }
 
