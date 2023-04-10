@@ -2,6 +2,7 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -15,6 +16,11 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
+   private String firstName;
+   private String lastName;
+   private LocalDate DOB;
+   private String phone;
+   private String email;
 
    public User() { }
 

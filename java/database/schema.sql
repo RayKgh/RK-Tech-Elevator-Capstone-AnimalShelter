@@ -11,11 +11,11 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
-	first_name varchar(50) NOT NULL,
-	last_name varchar(50) NOT NULL,
-	DOB date NOT NULL,
-	phone_number varchar(10) NOT NULL,
-	email_address varchar(50) NOT NULL,
+	first_name varchar(50),
+	last_name varchar(50),
+	DOB date,
+	phone_number varchar(10),
+	email_address varchar(50),
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
