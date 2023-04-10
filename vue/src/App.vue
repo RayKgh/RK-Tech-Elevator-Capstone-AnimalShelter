@@ -53,11 +53,10 @@
 
 html,
 body {
-    background-image: url("https://i.imgur.com/d534hFp.png");
-    background-size: 100% ;
-    
-    background-repeat: no-repeat;
-  
+  background-image: url("https://i.imgur.com/d534hFp.png");
+  background-size: 100%;
+
+  background-repeat: no-repeat;
 }
 </style>
 
