@@ -21,19 +21,15 @@
     <router-view />
   </div>
 
-  <!-- tag="img" src="https://i.imgur.com/rBJDZci.png"/ -->
+
 </template>
 
 <script>
 </script>
 
 <style>
-.nav {
-  padding-top: 25px;
-  padding-bottom: 25px;
-  padding-left: 75vh;
-  padding-right: 75vh;
-}
+
+
 
 .image {
   padding: 25px;
