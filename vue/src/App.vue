@@ -1,8 +1,8 @@
 <template class="page">
   <div id="app">
-<<<<<<< HEAD
-    <nav-bar/>
-=======
+    <<<<<<< HEAD
+    <nav-bar />
+    =======
     <div id="nav" class="nav">
       <router-link v-bind:to="{ name: 'home' }">
         <img src="https://i.imgur.com/rBJDZci.png" class="image" />
@@ -31,7 +31,7 @@
         </li>
       </ul>
     </div>
->>>>>>> 5fe5fce4251bd0d86c200ba064db661d91da184a
+    >>>>>>> 5fe5fce4251bd0d86c200ba064db661d91da184a
     <router-view />
   </div>
 </template>
