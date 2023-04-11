@@ -4,27 +4,29 @@
         <router-link v-bind:to="{ name: 'home' }">
           <img  src="https://i.imgur.com/rBJDZci.png" class="image" />
         </router-link> &nbsp;&nbsp;
+    <div id="nav-items">
+          <router-link v-bind:to="{ name: 'adopt' }" class="nav-item">
+            Adopt
+          </router-link>
 
-        <ul id="nav-items">
-        
-          <li>
-              <router-link v-bind:to="{ name: 'adopt' }" class="petList">
-                Adopt
-              </router-link>
-          </li>
-          <li>
-              <!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != 'Login'">Login</router-link> -->
+          <div>
+            <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="nav-item">
+             Logout
+            </router-link>
+
+            <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token === ''" class="nav-item">
               Login
-          </li>
-          <li>
-            <button>
-                <router-link v-bind:to="{ name: 'register' }" class="volunteerList">
-                  Volunteer
-                </router-link>
-        </button>
-          </li>
-        </ul>
-      </div>
+            </router-link>
+          </div>
+        
+          <button class="volunteerList">
+            <router-link v-bind:to="{ name: 'register' }" class="nav-item">
+                Volunteer
+            </router-link>
+          </button>
+    </div>
+
+  </div>
 
 </template>
 
@@ -47,34 +49,22 @@ methods: {
   padding-left: 20px;
 } 
 
-#nav-items {
-  display: flex;
-  list-style: none;
-  width: 35%;
-  align-items: center;
-  justify-content: space-between;
-  padding-right: 30px;
-}
-
-#nav-items li {
-  font-size: 25px;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #f2ebe6;
-}
-
-#nav-items a{
-  text-decoration: none;
-}
-
-
 .image {
   max-height: 100px;
 }
 
-.petList {
-  color: white;
-  font-weight: bold;
+#nav-items{
+  display: flex;
+  width: 40%;
+  justify-content: space-around;
+}
+
+.nav-item {
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #f2ebe6;
+  text-decoration: none;
 }
 
 .volunteerList {

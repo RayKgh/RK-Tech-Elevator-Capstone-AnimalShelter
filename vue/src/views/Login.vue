@@ -27,14 +27,16 @@
           class="passWord"
         />
       </div>
-      <button type="submit" class="signIn">Sign in</button>
+      <button type="submit" class="signIn">
+          Sign in
+      </button>
     </form>
     <div class="registervol">
       <h2>Not registered as a volunteer?</h2>
       <button class="regBtn">
-        <router-link :to="{ name: 'register' }" class="signUp">
-          Sign up Now!</router-link
-        >
+        <router-link :to="{ name: 'register' }" class="page-btn">
+          Sign up Now!
+        </router-link>
       </button>
     </div>
   </div>
@@ -63,7 +65,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            this.$router.push({name: "home"});
           }
         })
         .catch((error) => {
@@ -156,7 +158,7 @@ label {
   padding: 0;
 }
 
-.signUp {
+.page-btn {
   font-weight: bold;
   color: #f2ebe6;
   font-family: "Poppins", sans-serif;
