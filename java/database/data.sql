@@ -14,22 +14,22 @@ INSERT INTO pets(pet_name,  breed, color, is_vaccinated, sex, adoption_status, p
 VALUES ('name2', 'test', 'test', true, 'test', 'test', 'test');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(1,'test1','test description');
+VALUES(1,'test1','test description1');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(1,'test2','test description');
+VALUES(1,'test2','test description1');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(1,'test3','test description');
+VALUES(1,'test3','test description1');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(2,'test4','test description');
+VALUES(2,'test4','test description2');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(2,'test5','test description');
+VALUES(2,'test5','test description2');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(2,'test6','test description');
+VALUES(2,'test6','test description2');
 
 
 COMMIT TRANSACTION;

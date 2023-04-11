@@ -1,12 +1,15 @@
 <template>
   <div class="card">
-    <h2 class="pet-name">{{ pet.name }}</h2>
-    <img class="pet-image" v-bind:src="'#'" />
+    <h3>{{ pet.petName }}</h3>
+    <pet-photos v-bind:petID="pet.petID" />
+    <p>{{ pet.petDescription }}</p>
   </div>
 </template>
 
 <script>
+import PetPhotos from "./PetPhotos.vue";
 export default {
+  components: { PetPhotos },
   name: "pet-card",
   props: ["pet"],
 };

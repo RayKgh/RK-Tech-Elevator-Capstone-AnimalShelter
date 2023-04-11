@@ -1,16 +1,12 @@
 <template>
   <div class="pet-container">
-    <pet-card
-      v-for="pet in $store.state.pets"
-      v-bind:key="pet.petID"
-      v-bind:pet="pet"
-    />
+    <pet-card v-for="pet in pets" v-bind:key="pet.petID" v-bind:pet="pet" />
   </div>
 </template>
 
 <script>
 import PetService from "../services/PetService.js";
-import PetCard from "../components/PetCard.vue";
+import PetCard from "./PetCard.vue";
 
 export default {
   name: "pet-catalog",

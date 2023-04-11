@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PhotoDao {
 
-    List<Photo> photosByPetID(int petID);
+    List<Photo> getAllPhotos();
 }

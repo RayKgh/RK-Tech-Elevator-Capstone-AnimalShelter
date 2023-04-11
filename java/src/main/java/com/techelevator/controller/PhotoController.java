@@ -20,9 +20,9 @@ public class PhotoController {
         this.photoDao = photoDao;
     }
 
-    @GetMapping("/photos/{id}")
-    public List<Photo> getPhotosByID(@PathVariable int id){
-        return photoDao.photosByPetID(id);
+    @GetMapping("/photos")
+    public List<Photo> getPhotosByID(){
+        return photoDao.getAllPhotos();
     }
 
 }

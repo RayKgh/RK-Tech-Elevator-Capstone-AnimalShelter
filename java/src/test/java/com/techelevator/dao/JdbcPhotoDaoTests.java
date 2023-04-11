@@ -22,21 +22,21 @@ public class JdbcPhotoDaoTests extends BaseDaoTests{
         sut = new JdbcPhotoDao(jdbcTemplate);
     }
 
-    @Test
-    public void getPhotoByPetID_for_pet_1_returns_3(){
-        List<Photo> photos = sut.photosByPetID(1);
-        Assert.assertNotNull(photos);
-        Assert.assertEquals(3,photos.size());
-        assertPhotosMatch(PHOTO_1,photos.get(0));
-    }
-
-    @Test
-    public void getPhotoByPetID_for_pet_2_returns_3(){
-        List<Photo> photos = sut.photosByPetID(2);
-        Assert.assertNotNull(photos);
-        Assert.assertEquals(3,photos.size());
-        assertPhotosMatch(PHOTO_6,photos.get(2));
-    }
+//    @Test
+//    public void getPhotoByPetID_for_pet_1_returns_3(){
+//        List<Photo> photos = sut.photosByPetID(1);
+//        Assert.assertNotNull(photos);
+//        Assert.assertEquals(3,photos.size());
+//        assertPhotosMatch(PHOTO_1,photos.get(0));
+//    }
+//
+//    @Test
+//    public void getPhotoByPetID_for_pet_2_returns_3(){
+//        List<Photo> photos = sut.photosByPetID(2);
+//        Assert.assertNotNull(photos);
+//        Assert.assertEquals(3,photos.size());
+//        assertPhotosMatch(PHOTO_6,photos.get(2));
+//    }
 
     private void assertPhotosMatch(Photo expected, Photo actual){
         Assert.assertEquals(expected.getPhotoID(),actual.getPhotoID());

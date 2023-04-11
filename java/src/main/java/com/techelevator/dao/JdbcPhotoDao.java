@@ -17,10 +17,10 @@ public class JdbcPhotoDao implements PhotoDao {
     }
 
     @Override
-    public List<Photo> photosByPetID(int petID) {
+    public List<Photo> getAllPhotos() {
         List<Photo> photos = new ArrayList<>();
-        String sql = "SELECT * FROM photos WHERE pet_id=?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,petID);
+        String sql = "SELECT * FROM photos;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()){
             photos.add(mapRowToPhoto(results));
         }

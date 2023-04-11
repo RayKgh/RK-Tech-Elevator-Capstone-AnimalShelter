@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 import PetCatalog from "../components/PetCatalog.vue";
 
 export default {
@@ -15,5 +14,6 @@ export default {
 };
 </script>
 
+    
 <style scoped>
 </style>
