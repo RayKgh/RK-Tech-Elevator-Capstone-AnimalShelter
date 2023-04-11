@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <div v-for="photo in photosById()" :key="photo.photoID">
-      <p>{{ photo.description }}</p>
-    </div>
+  <div class="fill">
+    <img
+      :src="getFirstPhoto().source"
+      class="image"
+      :alt="getFirstPhoto().description"
+    />
   </div>
 </template>
 
@@ -26,9 +28,22 @@ export default {
     photosById() {
       return this.photos.filter((photo) => photo.petID == this.petID);
     },
+    getFirstPhoto() {
+      let pictures = this.photosById();
+      pictures = pictures[0];
+      return pictures;
+    },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.image {
+  display: flex;
+  border-radius: 50%;
+  align-self: center;
+  justify-content: center;
+  min-width: 60%;
+  min-height: 65%;
+}
 </style>

@@ -8,28 +8,48 @@ VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','
 
 
 INSERT INTO pets(pet_name, breed, color, is_vaccinated, sex, adoption_status, pet_description)
-VALUES ('name1',  'test', 'test', false, 'test', 'test', 'test');
+VALUES ('Rocky', 'Normal Sloth', 'Black', true, 'Male', 'Available', 'Rocky is a sloth.');
 
 INSERT INTO pets(pet_name,  breed, color, is_vaccinated, sex, adoption_status, pet_description)
-VALUES ('name2', 'test', 'test', true, 'test', 'test', 'test');
+VALUES ('Callisto', 'Upside Down Sloth', 'Reddish-Brown', true, 'Female', 'Avalable', 'Callisto is a sloth.');
+
+INSERT INTO pets(pet_name, breed, color, is_vaccinated, sex, adoption_status, pet_description)
+VALUES ('Raisin', 'Upside Down Sloth', 'Blonde', false, 'Male', 'Available', 'Raisin is a sloth.');
+
+INSERT INTO pets(pet_name,  breed, color, is_vaccinated, sex, adoption_status, pet_description)
+VALUES ('Liane', 'Upside Down Sloth', 'Blonde', true, 'Female', 'Adopted', 'Liane is a sloth.');
+
+INSERT INTO pets(pet_name,  breed, color, is_vaccinated, sex, adoption_status, pet_description)
+VALUES ('Lightning', 'Upside Down Sloth', 'Reddish-Blonde', true, 'Male', 'Adopted', 'Lightning is a sloth.');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(1,'test1','test description1');
+VALUES(1,'https://i.imgur.com/7rhDPcZ.jpg','Rocky Photo 1');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(1,'test2','test description1');
+VALUES(1,'https://i.imgur.com/674mArJ.jpg','Rocky Photo 2');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(1,'test3','test description1');
+VALUES(2,'https://i.imgur.com/w2JQwor.jpg','Callisto Photo 1');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(2,'test4','test description2');
+VALUES(2,'https://i.imgur.com/wyDSD1T.jpg','Callisto Photo 2');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(2,'test5','test description2');
+VALUES(3,'https://i.imgur.com/D6ynbeC.jpg','Raisin Photo 1');
 
 INSERT INTO photos(pet_id,source,description)
-VALUES(2,'test6','test description2');
+VALUES(3,'https://i.imgur.com/tkZ47AA.jpg','Raisin Photo 2');
 
+INSERT INTO photos(pet_id,source,description)
+VALUES(4,'https://i.imgur.com/0nZLIcu.jpg','Lianne Photo 1');
+
+INSERT INTO photos(pet_id,source,description)
+VALUES(4,'https://i.imgur.com/x9nBjf0.jpg','Lianne Photo 2');
+
+INSERT INTO photos(pet_id,source,description)
+VALUES(5,'https://i.imgur.com/ET3vUyM.jpg','Lightning Photo 1');
+
+INSERT INTO photos(pet_id,source,description)
+VALUES(5,'https://i.imgur.com/mM7JIG8.jpg','Lightning Photo 2');
 
 COMMIT TRANSACTION;

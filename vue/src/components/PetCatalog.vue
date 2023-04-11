@@ -27,4 +27,9 @@ export default {
 </script>
 
 <style scoped>
+.pet-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 </style>
