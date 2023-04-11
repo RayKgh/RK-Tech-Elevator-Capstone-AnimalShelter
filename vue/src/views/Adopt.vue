@@ -1,21 +1,18 @@
 <template>
   <div>
-      <h1>
-          Adopt
-      </h1>
-      </div>
+    <h1>Adopt</h1>
+    <pet-catalog />
+  </div>
 </template>
 
 <script>
-export default {
-name: 'adopt',
-data() {
+import PetCatalog from "../components/PetCatalog.vue";
 
-},
-methods: {}
-}
+export default {
+  name: "adopt",
+  components: { PetCatalog },
+};
 </script>
 
-<style>
-
+<style scoped>
 </style>
