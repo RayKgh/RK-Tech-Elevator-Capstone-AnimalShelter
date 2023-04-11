@@ -33,14 +33,22 @@ public class JdbcPetDao implements PetDao{
         Pet pet = new Pet();
         pet.setPetID(results.getInt("pet_id"));
         pet.setPetName(results.getString("pet_name"));
-        pet.setDOB(results.getDate("DOB").toLocalDate());
+        if(results.getDate("DOB")!=null) {
+            pet.setDOB(results.getDate("DOB").toLocalDate());
+        }
         pet.setBreed(results.getString("breed"));
         pet.setColor(results.getString("color"));
         pet.setSex(results.getString("sex"));
         pet.setAdoptionStatus(results.getString("adoption_status"));
         pet.setVaccinated(results.getBoolean("is_vaccinated"));
+
+        if(results.getDate("entry_date")!=null){
         pet.setEntryDate(results.getDate("entry_date").toLocalDate());
-        pet.setAdoptionDate(results.getDate("adoption_date").toLocalDate());
+        }
+
+        if(results.getDate("adoption_date")!=null) {
+            pet.setAdoptionDate(results.getDate("adoption_date").toLocalDate());
+        }
         pet.setPetDescription(results.getString("pet_description"));
 
         return pet;

@@ -5,7 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-// import Adopt from '..views/Adopt.vue'
+import Adopt from '../views/Adopt.vue'
 
 Vue.use(Router)
 
@@ -53,7 +53,16 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/adopt",
+      name: "adopt",
+      component: Adopt,
+      meta: {
+        requiresAuth: false
+      }
     }
+<<<<<<< HEAD
     // {
     //   path: "/adopt",
     //   name: "adopt",
@@ -62,6 +71,8 @@ const router = new Router({
     //     requiresAuth: false
     //   }
     // }
+=======
+>>>>>>> 8c78ad5fb9580843cd16809dee2994221a6aec52
 
   ]
 })
