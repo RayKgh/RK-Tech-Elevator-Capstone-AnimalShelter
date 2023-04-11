@@ -1,26 +1,22 @@
 <template>
-  <div>
-    <div v-for="pet in pets" :key="pet.petID">
-      <h3>{{ pet.petName }}</h3>
-      <ul>
-        <li>{{ pet.breed }}</li>
-        <li>{{ pet.color }}</li>
-        <li>{{ pet.sex }}</li>
-        <li>{{ pet.adoptionStatus }}</li>
-        <li>{{ pet.entryDate }}</li>
-        <li>{{ pet.petDescription }}</li>
-        <li>{{ pet.vaccinated }}</li>
-        <li>{{ pet.dob }}</li>
-      </ul>
-    </div>
+  <div class="pet-container">
+    <pet-card
+      v-for="pet in $store.state.pets"
+      v-bind:key="pet.petID"
+      v-bind:pet="pet"
+    />
   </div>
 </template>
 
 <script>
 import PetService from "../services/PetService.js";
+import PetCard from "../components/PetCard.vue";
 
 export default {
   name: "pet-catalog",
+  components: {
+    PetCard,
+  },
   computed: {
     pets() {
       return this.$store.state.pets;
