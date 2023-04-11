@@ -50,6 +50,7 @@
   justify-content: space-between;
   height: 130px;
   padding-left: 20px;
+  
 } 
 
 #nav-items {
@@ -59,6 +60,7 @@
   align-items: center;
   justify-content: space-between;
   padding-right: 30px;
+  padding-bottom: 20px;
 }
 
 #nav-items li {
