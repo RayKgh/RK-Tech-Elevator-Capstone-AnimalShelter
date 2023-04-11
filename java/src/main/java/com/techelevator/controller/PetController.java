@@ -13,17 +13,17 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("permitAll()")
+
 public class PetController {
 
-    private final JdbcPetDao petDao;
+    private final PetDao petDao;
 
-    public PetController(JdbcPetDao petDao) {
+    public PetController(PetDao petDao) {
         this.petDao = petDao;
     }
 
-//TODO: add error handling and change to dto
-
-    @GetMapping("http://localhost:9000/pets")
+    //TODO: add error handling and change to dto
+    @GetMapping("/pets")
     public List<Pet> listPets(){
         return petDao.listAllPets();
     }
