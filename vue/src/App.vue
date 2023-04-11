@@ -1,5 +1,8 @@
 <template class="page">
   <div id="app">
+<<<<<<< HEAD
+    <nav-bar/>
+=======
     <div id="nav" class="nav">
       <router-link v-bind:to="{ name: 'home' }">
         <img src="https://i.imgur.com/rBJDZci.png" class="image" />
@@ -28,13 +31,27 @@
         </li>
       </ul>
     </div>
+>>>>>>> 5fe5fce4251bd0d86c200ba064db661d91da184a
     <router-view />
   </div>
 </template>
 
 <script>
+import NavBar from "./components/NavBar.vue";
+
+<<<<<<< HEAD
+export default {
+   components:{
+     NavBar,
+   } 
+}
+
+
+
 </script>
 
+<style>
+=======
 <style>
 .nav {
   display: flex;
@@ -77,6 +94,7 @@
   color: white;
   font-weight: bold;
 }
+>>>>>>> 5fe5fce4251bd0d86c200ba064db661d91da184a
 
 html,
 body {
@@ -90,6 +108,9 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+<<<<<<< HEAD
+
+=======
 button {
   border-radius: 50px;
   border: none;
@@ -100,5 +121,6 @@ button {
   text-transform: uppercase;
   text-decoration: none;
 }
+>>>>>>> 5fe5fce4251bd0d86c200ba064db661d91da184a
 </style>
 
