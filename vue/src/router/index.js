@@ -62,18 +62,6 @@ const router = new Router({
         requiresAuth: false
       }
     }
-<<<<<<< HEAD
-    // {
-    //   path: "/adopt",
-    //   name: "adopt",
-    //   component: Adopt,
-    //   meta: {
-    //     requiresAuth: false
-    //   }
-    // }
-=======
->>>>>>> 8c78ad5fb9580843cd16809dee2994221a6aec52
-
   ]
 })
 
