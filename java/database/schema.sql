@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS photo;
+DROP TABLE IF EXISTS photos;
 DROP TABLE IF EXISTS pets;
 
 DROP TABLE IF EXISTS application;
@@ -42,11 +42,12 @@ CREATE TABLE pets(
 	pet_description varchar(500)
 );
 
-CREATE TABLE photo(
+CREATE TABLE photos(
 	photo_id SERIAL PRIMARY KEY,
 	pet_id int NOT NULL,
 	source varchar(500) NOT NULL,
+	description varchar(100),
 	
-	CONSTRAINT fk_photo FOREIGN KEY(pet_id) REFERENCES pets(pet_id)
+	CONSTRAINT fk_photos FOREIGN KEY(pet_id) REFERENCES pets(pet_id)
 );
 COMMIT TRANSACTION;
