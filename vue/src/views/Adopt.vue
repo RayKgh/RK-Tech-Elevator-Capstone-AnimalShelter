@@ -7,12 +7,16 @@
 </template>
 
 <script>
+
+
 export default {
 name: 'adopt',
 data() {
 
 },
-methods: {}
+methods: {
+
+}
 }
 </script>
 
