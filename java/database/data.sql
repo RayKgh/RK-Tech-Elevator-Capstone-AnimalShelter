@@ -54,4 +54,7 @@ VALUES(5,'https://i.imgur.com/ET3vUyM.jpg','Lightning Photo 1');
 INSERT INTO photos(pet_id,source,description)
 VALUES(5,'https://i.imgur.com/mM7JIG8.jpg','Lightning Photo 2');
 
+INSERT INTO photos(pet_id,description)
+VALUES(6,'this is a test sloth');
+
 COMMIT TRANSACTION;

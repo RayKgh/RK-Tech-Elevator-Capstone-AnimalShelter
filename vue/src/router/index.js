@@ -9,6 +9,7 @@ import Adopt from '../views/Adopt.vue'
 import UserHomePage from '../views/UserHomepage.vue'
 import Directory from '../views/Directory.vue'
 import Volunteer from '../views/Volunteer.vue'
+import PetDetails from '../views/PetDetails.vue'
 
 Vue.use(Router)
 
@@ -24,6 +25,7 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  props: ['id'],
   routes: [
     {
       path: '/',
@@ -89,8 +91,19 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/adopt/:id',
+      name: 'adopt-pet',
+      component: PetDetails,
+      props: { PetDetails: true },
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
+
+
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication

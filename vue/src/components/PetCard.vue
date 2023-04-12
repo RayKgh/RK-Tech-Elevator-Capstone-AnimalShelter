@@ -2,8 +2,16 @@
   <div class="card">
     <pet-photos v-bind:petID="pet.petID" class="image" />
     <h2 class="name">{{ pet.petName }}</h2>
+    <ul>
+      <li>{{ pet.sex }}</li>
+      <li>{{ pet.breed }}</li>
+      <li>{{ pet.color }}</li>
+      <li>{{ pet.vaccinated }}</li>
+    </ul>
     <p class="description">{{ pet.petDescription }}</p>
-    <router-link :to="{ name: 'home' }" class="button"
+    <router-link
+      :to="{ name: 'adopt-pet', params: { id: pet.petID } }"
+      class="button"
       >More {{ pet.petName }}</router-link
     >
   </div>
@@ -15,6 +23,7 @@ export default {
   components: { PetPhotos },
   name: "pet-card",
   props: ["pet"],
+  methods: {},
 };
 </script>
 

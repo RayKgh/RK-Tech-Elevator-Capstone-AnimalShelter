@@ -41,7 +41,6 @@ CREATE TABLE pets(
 	adoption_status varchar(30) CHECK (adoption_status IN ('Available','Adopted')),
 	is_vaccinated boolean,
 	entry_date date,
-
 	adoption_date date CONSTRAINT adoption_date_exists_only_if_adoption_status_is_adopted CHECK (
 	((adoption_status IN ('Available','Adopted')) AND adoption_date IS NULL)
 	OR
@@ -55,7 +54,7 @@ CREATE TABLE pets(
 CREATE TABLE photos(
 	photo_id SERIAL PRIMARY KEY,
 	pet_id int NOT NULL,
-	source varchar(500) NOT NULL,
+	source varchar(500) NOT NULL DEFAULT 'https://i.imgur.com/rBJDZci.png',
 	description varchar(100),
 	
 	CONSTRAINT fk_photos FOREIGN KEY(pet_id) REFERENCES pets(pet_id)
