@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     carouselPets() {
-      return this.pets.filter((pet) => pet.petID < 3);
+      return this.pets.filter((pet) => pet.petID <= 3);
     },
   },
 };
