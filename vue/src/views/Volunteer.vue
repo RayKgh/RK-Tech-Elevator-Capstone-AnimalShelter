@@ -11,11 +11,11 @@
 <input type="text" id="lname" name="lname" placeholder="last name">
 </div>
 
-<div id="email"> 
-<input type="text" id="emailadd" name="emailadd" placeholder="email address">
+<div id="email-div"> 
+<input type="text" id="email" name="email" placeholder="email address">
 </div>
 
-<div id="number"> 
+<div id="phone-div"> 
 <input type="text" id="phonenum" name="phonenum" placeholder="Phone Number">
 </div>
 
@@ -57,18 +57,19 @@ section{
   width: 37%;
   padding-left: 5%;
   font-size: 30px;
-  border: dashed white;
+  /* border: dashed white; */
 }
 
 .create-reg{
   padding-top: 1%;
   font-size: 30px;
   padding-left: 10%;
-  border: dashed red;
+  /* border: dashed red; */
 }
 
 h2{
   font-weight: 800;
+  margin-bottom: 30px;
 }
 
 #fname{
@@ -83,7 +84,7 @@ h2{
   
 }
 
-#emailadd{
+#email{
    padding: 5px 5px 5px 5px;
    border-radius: 50px;
    width: 30%;
@@ -146,6 +147,10 @@ button:focus {
   width: 30%;
 }
 
+#names > input {
+  margin-right: 20px;
+}
+
 .signedup{
   display: flex;
   flex-direction: column;
@@ -182,7 +187,11 @@ button:focus {
 }
 
 form{
-  border: dashed blue;
+  /* border: dashed blue; */
   padding-left: 5%;
+}
+
+form > * {
+  margin-bottom: 20px;
 }
 </style>
