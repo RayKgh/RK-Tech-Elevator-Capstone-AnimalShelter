@@ -125,7 +125,7 @@ label {
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #f2ebe6;
-  padding: 25px 150px;
+  padding: 12.5px 100px 12.5px 50px;
   margin: 5px 0 60px 0;
   width: 100%;
 }
@@ -135,7 +135,7 @@ label {
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #f2ebe6;
-  padding: 25px 150px;
+  padding: 12.5px 100px 12.5px 50px;
   margin: 5px 0 20px 0;
   width: 100%;
 }
@@ -195,6 +195,21 @@ h1{
 h2{
   color: #f2ebe6;
   margin-top: 100px;
+}
+
+input{
+  font-size: 25px;
+  color: #59351F;
+  font-weight: 600;
+  margin: 0;
+  
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 </style>
 
