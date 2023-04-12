@@ -34,7 +34,7 @@
     <div class="registervol">
       <h2>Not registered as a volunteer?</h2>
       <button class="regBtn">
-        <router-link :to="{ name: 'register' }" class="page-btn">
+        <router-link :to="{ name: 'volunteer' }" class="page-btn">
           Sign up Now!
         </router-link>
       </button>

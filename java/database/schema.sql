@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
 	user_id SERIAL,
+	application_id int,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL CHECK (role IN ('ROLE_ADMIN','ROLE_USER')),
@@ -17,15 +18,19 @@ CREATE TABLE users (
 	phone_number varchar(10),
 	email_address varchar(50),
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
+	CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES applications(user_id)
 );
 
-CREATE TABLE application (
+CREATE TABLE applications (
 	application_id SERIAL PRIMARY KEY,
-	user_id int NOT NULL,
 	application_date date NOT NULL,
 	status varchar(20),
-	
-	CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES users(user_id)
+	first_name varChar(50),
+	last_name varchar(50),
+	DOB date,
+	phone_number varchar(10),
+	email_address varchar(50),
+	CONSTRAINT PK_application PRIMARY KEY (user_id)
 );
 
 CREATE TABLE pets(
