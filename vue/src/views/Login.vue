@@ -104,7 +104,7 @@ form {
 }
 
 label {
-  margin-right: 0.5rem;
+  margin-left: 20px;
 }
 
 .signIn {

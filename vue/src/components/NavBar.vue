@@ -28,7 +28,7 @@
           </div>
         
           <button class="volunteerList">
-            <router-link v-bind:to="{ name: 'register' }" v-if="$store.state.token === ''" class="nav-item">
+            <router-link v-bind:to="{ name: 'volunteer' }" v-if="$store.state.token === ''" class="nav-item">
                 Volunteer
             </router-link>
 

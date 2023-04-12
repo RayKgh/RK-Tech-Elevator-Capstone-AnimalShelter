@@ -8,6 +8,7 @@ import store from '../store/index'
 import Adopt from '../views/Adopt.vue'
 import UserHomePage from '../views/UserHomepage.vue'
 import Directory from '../views/Directory.vue'
+import Volunteer from '../views/Volunteer.vue'
 
 Vue.use(Router)
 
@@ -78,6 +79,14 @@ const router = new Router({
       component: Directory,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: '/volunteer',
+      name: 'volunteer',
+      component: Volunteer,
+      meta: {
+        requiresAuth: false
       }
     },
   ]
