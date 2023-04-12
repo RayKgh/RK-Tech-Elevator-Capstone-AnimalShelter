@@ -3,7 +3,7 @@
     <form @submit.prevent="login">
       <h1>Login, Please.</h1>
       <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
+        Invalid username and/or password!
       </div>
       <div role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.

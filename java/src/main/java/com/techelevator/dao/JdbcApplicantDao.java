@@ -21,7 +21,7 @@ public class JdbcApplicantDao implements ApplicantDao{
 
         String sql = "INSERT INTO applications(application_date, first_name, last_name, DOB, phone_number, email_address) "
                     + "VALUES(?, ?, ?, ?, ?, ?);";
-        jdbcTemplate.queryForRowSet(sql, Applicant.class, applicant.getDate(), applicant.getFirstName(), applicant.getLastName(), applicant.getDob(), applicant.getPhoneNum(), applicant.getEmail());
+        jdbcTemplate.update(sql, applicant.getDate(), applicant.getFirstName(), applicant.getLastName(), applicant.getDob(), applicant.getPhoneNum(), applicant.getEmail());
     }
 
 }

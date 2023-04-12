@@ -5,22 +5,22 @@
 <div class="create-reg">
     <h2> Sign Up Today! </h2>
 </div>
-<form>
+<form @submit.prevent="submit">
 <div id="names">
-<input type="text" id="fname" name="fname" placeholder="first name">
-<input type="text" id="lname" name="lname" placeholder="last name">
+<input v-model="applicant.firstName" type="text" id="fname" name="fname" placeholder="first name">
+<input v-model="applicant.lastName" type="text" id="lname" name="lname" placeholder="last name">
 </div>
 
 <div id="email-div"> 
-<input type="text" id="email" name="email" placeholder="email address">
+<input v-model="applicant.email" type="text" id="email" name="email" placeholder="email address">
 </div>
 
 <div id="phone-div"> 
-<input type="text" id="phonenum" name="phonenum" placeholder="Phone Number">
+<input v-model="applicant.phoneNum" type="text" id="phonenum" name="phonenum" placeholder="Phone Number">
 </div>
 
 <div id="bday-submit">
-<input type="text" id="dob" name="dob" placeholder="Date-of-birth">
+<input v-model="applicant.dob" type="text" id="dob" name="dob" placeholder="Date-of-birth">
   <button type="submit" class="submitreg">
           Submit
       </button>
@@ -39,9 +39,35 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-     name: 'register',
-     data
+    name: 'volunteer',
+    data() {
+      return {
+        applicant: {
+          firstName: "",
+          lastName: "",
+          dob: "",
+          phoneNum: "",
+          email: ""
+        },
+      };
+    },
+    methods: {
+      submit() {
+         axios.post('/volunteer', this.applicant)
+          .then((response) => {
+            if (response.status == 201) {
+              this.$router.push({name: "home"});
+            }
+          })
+          .catch(() => {
+            alert("Volunteer Application was not able to submit. Refresh Page and try again.")
+          })
+      } 
+    }
+       
 }
 </script>
 

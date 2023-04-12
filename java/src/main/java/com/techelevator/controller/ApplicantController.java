@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ApplicantDao;
 import com.techelevator.model.Applicant;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,6 +15,7 @@ public class ApplicantController {
         this.applicantDao = applicantDao;
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/volunteer")
     public void submit(@RequestBody Applicant applicant){
         applicantDao.sumbitAppication(applicant);
