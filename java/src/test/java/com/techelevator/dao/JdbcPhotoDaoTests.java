@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.techelevator.model.Photo;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,21 +21,14 @@ public class JdbcPhotoDaoTests extends BaseDaoTests{
         sut = new JdbcPhotoDao(jdbcTemplate);
     }
 
-//    @Test
-//    public void getPhotoByPetID_for_pet_1_returns_3(){
-//        List<Photo> photos = sut.photosByPetID(1);
-//        Assert.assertNotNull(photos);
-//        Assert.assertEquals(3,photos.size());
-//        assertPhotosMatch(PHOTO_1,photos.get(0));
-//    }
-//
-//    @Test
-//    public void getPhotoByPetID_for_pet_2_returns_3(){
-//        List<Photo> photos = sut.photosByPetID(2);
-//        Assert.assertNotNull(photos);
-//        Assert.assertEquals(3,photos.size());
-//        assertPhotosMatch(PHOTO_6,photos.get(2));
-//    }
+    @Test
+    public void getPhotoByPetID_for_pet_1_returns_6(){
+        List<Photo> photos = sut.getAllPhotos();
+        Assert.assertNotNull(photos);
+        Assert.assertEquals(6,photos.size());
+        assertPhotosMatch(PHOTO_1,photos.get(0));
+        assertPhotosMatch(PHOTO_6,photos.get(5));
+    }
 
     private void assertPhotosMatch(Photo expected, Photo actual){
         Assert.assertEquals(expected.getPhotoID(),actual.getPhotoID());
