@@ -40,7 +40,7 @@ export default {
 <style scoped>
 .image {
   display: flex;
-  border-radius: 40%;
+  border-radius: 35%;
   align-self: flex-start;
   justify-content: center;
   min-width: 95%;
