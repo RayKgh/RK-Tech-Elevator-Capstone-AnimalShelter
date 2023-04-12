@@ -14,7 +14,7 @@ public class Applicant {
     private String phoneNum;
     private String email;
 
-    public Applicant(int applicationId, LocalDate date, String status, String firstName, String lastName, LocalDate dob, String phoneNum, String email) {
+    public Applicant(int applicationId, LocalDate date, String status, String firstName, String lastName, String dob, String phoneNum, String email) {
         this.applicationId = applicationId;
         this.date = date;
         this.status = status;
@@ -45,7 +45,7 @@ public class Applicant {
         return lastName;
     }
 
-    public LocalDate getDob() {
+    public String getDob() {
         return dob;
     }
 
@@ -77,7 +77,7 @@ public class Applicant {
         this.lastName = lastName;
     }
 
-    public void setDob(LocalDate dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
