@@ -2,9 +2,20 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS photos;
 DROP TABLE IF EXISTS pets;
-
-DROP TABLE IF EXISTS application;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS applications;
+
+
+CREATE TABLE applications (
+	application_id SERIAL PRIMARY KEY,
+	application_date date NOT NULL,
+	status varchar(20) DEFAULT 'pending',
+	first_name varchar(50),
+	last_name varchar(50),
+	DOB varchar(50),
+	phone_number varchar(10),
+	email_address varchar(50)
+);
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -14,23 +25,10 @@ CREATE TABLE users (
 	role varchar(50) NOT NULL CHECK (role IN ('ROLE_ADMIN','ROLE_USER')),
 	first_name varchar(50),
 	last_name varchar(50),
-	DOB date,
+	DOB varchar(50),
 	phone_number varchar(10),
 	email_address varchar(50),
-	CONSTRAINT PK_user PRIMARY KEY (user_id)
-	CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES applications(user_id)
-);
-
-CREATE TABLE applications (
-	application_id SERIAL PRIMARY KEY,
-	application_date date NOT NULL,
-	status varchar(20),
-	first_name varChar(50),
-	last_name varchar(50),
-	DOB date,
-	phone_number varchar(10),
-	email_address varchar(50),
-	CONSTRAINT PK_application PRIMARY KEY (user_id)
+	CONSTRAINT fk_users FOREIGN KEY(application_id) REFERENCES applications(application_id)
 );
 
 CREATE TABLE pets(
