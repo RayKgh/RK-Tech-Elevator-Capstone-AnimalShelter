@@ -64,8 +64,8 @@ const router = new Router({
       }
     },
     {
-      path: '/userhomepage',
-      name: 'user-homepage',
+      path: '/updatepets',
+      name: 'updatepets',
       component: UserHomePage,
       meta: {
         requiresAuth: true

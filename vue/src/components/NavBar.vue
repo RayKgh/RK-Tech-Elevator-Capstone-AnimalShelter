@@ -3,8 +3,16 @@
   <div id="nav" class="nav">
         <router-link v-bind:to="{ name: 'home' }">
           <img  src="https://i.imgur.com/rBJDZci.png" class="image" />
-        </router-link> &nbsp;&nbsp;
-    <div id="nav-items">
+        </router-link>
+
+    <div id="dark-nav">
+        <router-link v-bind:to="{ name: 'updatepets' }" v-if="$store.state.token != ''" class="dark-item">
+          Update Pets
+        </router-link>
+    </div>
+
+
+    <div class="nav-items">
           <router-link v-bind:to="{ name: 'adopt' }" class="nav-item">
             Adopt
           </router-link>
@@ -20,8 +28,12 @@
           </div>
         
           <button class="volunteerList">
-            <router-link v-bind:to="{ name: 'register' }" class="nav-item">
+            <router-link v-bind:to="{ name: 'register' }" v-if="$store.state.token === ''" class="nav-item">
                 Volunteer
+            </router-link>
+
+            <router-link v-bind:to="{ name: 'register' }" v-if="$store.state.token != ''" class="nav-item">
+                Directory
             </router-link>
           </button>
     </div>
@@ -40,7 +52,7 @@ methods: {
 }
 </script>
 
-<style>
+<style scoped>
 .nav {
   display: flex;
   align-items: center;
@@ -53,10 +65,21 @@ methods: {
   max-height: 100px;
 }
 
-#nav-items{
+#dark-nav{
   display: flex;
   width: 40%;
-  justify-content: space-around;
+  flex-direction: row-reverse;
+  font-size: 25px;
+  padding: 5px 0;
+  
+}
+
+.nav-items{
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+  font-size: 25px;
+  margin-right: 50px;
 }
 
 .nav-item {
@@ -65,6 +88,15 @@ methods: {
   font-weight: 700;
   color: #f2ebe6;
   text-decoration: none;
+}
+
+.dark-item {
+   font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 800;
+  text-decoration: none;
+  color: #335137;
+  padding: 0 0 10px;
 }
 
 .volunteerList {

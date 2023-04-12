@@ -93,22 +93,14 @@ form {
   align-items: flex-start;
 }
 
-h1 {
-  color: #426b53;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 100px;
-  /* background-color: yellow; */
-  /* padding-top: 100px; */
-}
-
 .form-input-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
   color: #426b53;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 25px;
+  text-transform: uppercase;
 }
 
 label {
@@ -117,26 +109,34 @@ label {
 
 .signIn {
   border-radius: 50px;
+  border: 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #de854e;
   color: #f2ebe6;
-  padding: 15px 50px;
+  padding: 10px 70px;
+  margin-top: 20px;
   font-weight: 800;
-  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  text-transform: uppercase;
 }
 
 .userName {
   border-radius: 50px;
+  border: 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #f2ebe6;
-  padding: 15px 50px;
-  margin: 5px 0 15px 0;
+  padding: 25px 150px;
+  margin: 5px 0 60px 0;
   width: 100%;
 }
 
 .passWord {
   border-radius: 50px;
+  border: 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #f2ebe6;
-  padding: 15px 50px;
-  margin: 5px 0 15px 0;
+  padding: 25px 150px;
+  margin: 5px 0 20px 0;
   width: 100%;
 }
 
@@ -145,13 +145,11 @@ label {
   flex-direction: column;
   align-items: center;
   font-weight: 800;
-  font-family: "Poppins", sans-serif;
   color: #f2ebe6;
   font-size: 40px;
   text-transform: uppercase;
-  /* background-color: red; */
   align-self: flex-end;
-  margin-right: 200px;
+  margin: 0 250px 0 0;
   width: 30%;
   height: 50%;
 
@@ -161,15 +159,21 @@ label {
 .page-btn {
   font-weight: bold;
   color: #f2ebe6;
-  font-family: "Poppins", sans-serif;
   text-decoration: none;
+  font-weight: 800;
 }
 
 .regBtn {
   border-radius: 50px;
+  border: 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #de854e;
-  padding: 15px 50px;
-  margin-right: 60px;
+  color: #f2ebe6;
+  padding: 10px 50px;
+  margin-top: 20px;
+  font-size: 30px;
+  text-transform: uppercase;
+  
 }
 
 #login {
@@ -183,4 +187,14 @@ label {
   align-items: center;
   height: 80vh;
 }
+
+h1{
+  margin: 0 0 25px;
+}
+
+h2{
+  color: #f2ebe6;
+  margin-top: 100px;
+}
 </style>
+
