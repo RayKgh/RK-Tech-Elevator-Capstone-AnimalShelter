@@ -3,7 +3,9 @@
     <pet-photos v-bind:petID="pet.petID" class="image" />
     <h1 class="name">{{ pet.petName }}</h1>
     <p class="description">{{ pet.petDescription }}</p>
-    <router-link :to="{ name: 'home' }" class="button">View More</router-link>
+    <router-link :to="{ name: 'home' }" class="button"
+      >More {{ pet.petName }}</router-link
+    >
   </div>
 </template>
 

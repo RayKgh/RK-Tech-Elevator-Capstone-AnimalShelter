@@ -1,6 +1,25 @@
 <template>
   <div class="pet-container">
-    <pet-card v-for="pet in pets" v-bind:key="pet.petID" v-bind:pet="pet" />
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/271/271220.png"
+      alt="left
+    arrow"
+      id="left"
+      class="arrow"
+      @click="decrementCount()"
+    />
+    <pet-card
+      v-for="pet in carouselPets()"
+      v-bind:key="pet.petID"
+      v-bind:pet="pet"
+    />
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/271/271228.png"
+      alt="right arrow"
+      id="right"
+      class="arrow"
+      @click="incrementCount()"
+    />
   </div>
 </template>
 
@@ -9,6 +28,11 @@ import PetService from "../services/PetService.js";
 import PetCard from "./PetCard.vue";
 
 export default {
+  data() {
+    return {
+      i: 1,
+    };
+  },
   name: "pet-catalog",
   components: {
     PetCard,
@@ -23,6 +47,11 @@ export default {
       this.$store.commit("SET_ALL_PETS", pets.data);
     });
   },
+  methods: {
+    carouselPets() {
+      return this.pets.filter((pet) => pet.petID < 3);
+    },
+  },
 };
 </script>
 
@@ -31,5 +60,11 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.arrow {
+  width: 70px;
+  height: 70px;
+  align-self: center;
 }
 </style>
