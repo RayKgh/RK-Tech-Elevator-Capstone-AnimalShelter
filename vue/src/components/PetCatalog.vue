@@ -30,7 +30,8 @@ import PetCard from "./PetCard.vue";
 export default {
   data() {
     return {
-      i: 1,
+      lower: 1,
+      upper: 3,
     };
   },
   name: "pet-catalog",
@@ -49,7 +50,15 @@ export default {
   },
   methods: {
     carouselPets() {
-      return this.pets.filter((pet) => pet.petID <= 3);
+      return this.pets.filter((pet) => pet.petID <= this.upper);
+    },
+    decrementCount() {
+      this.lower = this.lower - 1;
+      this.upper = this.upper - 1;
+    },
+    incrementCOunt() {
+      this.lower = this.lower + 1;
+      this.upper = this.upper + 1;
     },
   },
 };
