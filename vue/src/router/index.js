@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Adopt from '../views/Adopt.vue'
 import UserHomePage from '../views/UserHomepage.vue'
+import Directory from '../views/Directory.vue'
 
 Vue.use(Router)
 
@@ -67,6 +68,14 @@ const router = new Router({
       path: '/updatepets',
       name: 'updatepets',
       component: UserHomePage,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/directory',
+      name: 'directory',
+      component: Directory,
       meta: {
         requiresAuth: true
       }

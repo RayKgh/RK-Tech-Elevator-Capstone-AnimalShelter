@@ -32,7 +32,7 @@
                 Volunteer
             </router-link>
 
-            <router-link v-bind:to="{ name: 'register' }" v-if="$store.state.token != ''" class="nav-item">
+            <router-link v-bind:to="{ name: 'directory' }" v-if="$store.state.token != ''" class="nav-item">
                 Directory
             </router-link>
           </button>
@@ -83,7 +83,6 @@ methods: {
 }
 
 .nav-item {
-  font-size: 25px;
   text-transform: uppercase;
   font-weight: 700;
   color: #f2ebe6;
@@ -96,7 +95,7 @@ methods: {
   font-weight: 800;
   text-decoration: none;
   color: #335137;
-  padding: 0 0 10px;
+  padding: 0 0 14px;
 }
 
 .volunteerList {
