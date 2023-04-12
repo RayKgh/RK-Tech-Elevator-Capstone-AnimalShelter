@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Adopt</h1>
     <pet-catalog />
   </div>
 </template>
