@@ -46,6 +46,7 @@ export default {
   min-width: 95%;
   min-height: 95%;
   max-width: 95%;
+  max-height: 95%;
   margin-top: 5px;
 }
 </style>

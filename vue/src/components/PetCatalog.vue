@@ -8,11 +8,7 @@
       class="arrow"
       @click="decrementCount()"
     />
-    <pet-card
-      v-for="pet in carouselPets()"
-      v-bind:key="pet.petID"
-      v-bind:pet="pet"
-    />
+    <pet-card v-for="pet in pets" v-bind:key="pet.petID" v-bind:pet="pet" />
     <img
       src="https://cdn-icons-png.flaticon.com/512/271/271228.png"
       alt="right arrow"

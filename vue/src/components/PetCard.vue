@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <pet-photos v-bind:petID="pet.petID" class="image" />
-    <h1 class="name">{{ pet.petName }}</h1>
+    <h2 class="name">{{ pet.petName }}</h2>
     <p class="description">{{ pet.petDescription }}</p>
     <router-link :to="{ name: 'home' }" class="button"
       >More {{ pet.petName }}</router-link
@@ -21,6 +21,7 @@ export default {
 <style scoped>
 .image {
   min-height: 50%;
+  max-height: 50%;
   min-width: 100%;
   overflow: hidden;
 }
@@ -42,6 +43,7 @@ export default {
   align-self: flex-start;
   text-align: left;
   margin: 5px;
+  font-size: 15px;
 }
 
 .button {
