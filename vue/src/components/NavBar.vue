@@ -98,7 +98,7 @@ methods: {
   font-weight: 800;
   text-decoration: none;
   color: #335137;
-  padding: 0 0 14px;
+  padding: 0 0 8px;
 }
 
 .volunteerList {
