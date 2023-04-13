@@ -29,15 +29,16 @@ export default {
     ageCalc() {
       if (this.pet.dob != null) {
         let birthDate = new Date(this.pet.dob);
-        let birthDay = birthDate.getDay();
-        let birthMonth = birthDate.getMonth() * 30;
-        let birthYear = birthDate.getFullYear() * 365;
-        let birthDays = birthDay + birthMonth + birthYear;
+        let birthDays =
+          birthDate.getDay() +
+          birthDate.getMonth() * 30 +
+          birthDate.getFullYear() * 365;
         let nowDate = new Date();
-        let nowDay = nowDate.getDay();
-        let nowMonth = nowDate.getMonth() * 30;
-        let nowYear = nowDate.getFullYear();
-        let nowDays = nowDay + nowMonth + nowYear * 365;
+        let nowDays =
+          nowDate.getDay() +
+          nowDate.getMonth() * 30 +
+          nowDate.getFullYear() * 365;
+
         let age = Math.floor((nowDays - birthDays) / 365);
         return age;
       } else {
