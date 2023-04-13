@@ -27,7 +27,7 @@
 
         <div id="phone-div" class="input-box">
           <label for="phonenum">Phone</label>
-          <input v-model="applicant.phoneNum" type="tel" id="phonenum" name="phonenum"  maxlength="10" placeholder="9251234567" required> 
+          <input v-model="applicant.phoneNum" type="tel" id="phonenum" name="phonenum"  maxlength="15" placeholder="9251234567" required> 
         </div>
 
         <div id="bday-submit">
@@ -39,6 +39,10 @@
           <div id="bday-btn">
              <button type="submit" class="submitreg"> Submit </button>
           </div>
+
+           <div role="alert" v-if="submitError" class="submit-error">
+              Your Sign-up form was unable to submit. Please try again Later.
+          </div>
         </div>
     </form>
 
@@ -48,7 +52,7 @@
    <div class="signedup">
       <h3>Already a volunteer?</h3>
       <button class="sign-in">
-        <router-link :to="{ name: 'home' }" class="sign-in-link">
+        <router-link :to="{ name: 'login' }" class="sign-in-link">
           Sign in here!
         </router-link>
       </button>
@@ -72,6 +76,7 @@ export default {
           phoneNum: "",
           email: ""
         },
+        submitError: false,
       };
     },
     methods: {
@@ -82,9 +87,13 @@ export default {
               this.$router.push({name: "home"});
             }
           })
-          .catch(() => {
-            alert("Volunteer Application was not able to submit. Refresh Page and try again.")
-          })
+          .catch((error) => {
+          const response = error.response;
+
+          if (response.status === 400) {
+            this.submitError = true;
+          }
+        });
       } 
     }
        
@@ -96,11 +105,13 @@ export default {
 .volunteer-page{
   display: flex;
   justify-content: space-between;
+}
 
+.volunteer {
+  margin-top: 80px;
 }
 
 h1{
-  
   font-size: 65px;
   margin: 20px 80px 0;
   
@@ -114,9 +125,9 @@ p {
 }
 
 form {
-  margin-left: 100px;
+  margin: 50px 100px 175px;
   width: 380px;
-  margin-bottom: 250px;
+  
 
 }
 
@@ -202,7 +213,7 @@ button:focus {
   font-weight: 800;
   font-size: 40px;
   text-transform: uppercase;
-  margin: 0px 70px 0 0;
+  margin: 0px 50px 0 0;
   width: 30%;
   height: 50%;
   padding: 0;
@@ -266,9 +277,6 @@ form > * {
   text-transform: uppercase;
 }
 
-.submitreg > button {
-  color: red;
-}
 
 h3 {
   font-size: 50px;

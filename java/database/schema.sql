@@ -13,7 +13,7 @@ CREATE TABLE applications (
 	first_name varchar(50),
 	last_name varchar(50),
 	DOB varchar(50),
-	phone_number varchar(20),
+	phone_number varchar(10),
 	email_address varchar(50)
 );
 
