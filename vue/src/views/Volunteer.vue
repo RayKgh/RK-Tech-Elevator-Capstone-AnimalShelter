@@ -48,7 +48,7 @@
    <div class="signedup">
       <h3>Already a volunteer?</h3>
       <button class="sign-in">
-        <router-link :to="{ name: 'home' }" class="sign-in-link">
+        <router-link :to="{ name: 'login' }" class="sign-in-link">
           Sign in here!
         </router-link>
       </button>
