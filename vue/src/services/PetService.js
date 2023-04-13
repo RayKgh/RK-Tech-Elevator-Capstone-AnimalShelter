@@ -8,6 +8,10 @@ export default {
 
     getAllPets() {
         return http.get('/pets')
+    },
+
+    addNewPet(pet) {
+        return http.post('/pets/add', pet)
     }
 
 }

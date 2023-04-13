@@ -10,8 +10,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class JdbcPetDaoTests extends BaseDaoTests{
-    private final Pet PET_1 = new Pet(1,"name1",LocalDate.of(2011,11,11),"test","test",false,"test","Adopted",LocalDate.of(2011,11,11),LocalDate.of(2011,11,11),"test");
-    private final Pet PET_2 = new  Pet(2,"name2",LocalDate.of(2011,11,11),"test","test",false,"test","Adopted",LocalDate.of(2011,11,11),LocalDate.of(2011,11,11),"test");
+    private final Pet PET_1 = new Pet(1,"name1","2011-11-11","test","test",false,"test","Adopted","2011-11-11","2011-11-11","test");
+    private final Pet PET_2 = new  Pet(2,"name2","2011-11-11","test","test",false,"test","Adopted","2011-11-11","2011-11-11","test");
 
     private JdbcPetDao sut;
 

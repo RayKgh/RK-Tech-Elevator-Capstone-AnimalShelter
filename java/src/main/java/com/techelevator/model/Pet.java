@@ -1,22 +1,21 @@
 package com.techelevator.model;
 
 
-import java.time.LocalDate;
 
 public class Pet {
     private int petID;
     private String petName;
-    private LocalDate DOB;
+    private String DOB;
     private String breed;
     private String color;
     private boolean isVaccinated;
     private String sex;
     private String adoptionStatus;
-    private LocalDate entryDate;
-    private LocalDate adoptionDate;
+    private String entryDate;
+    private String adoptionDate;
     private String petDescription;
 
-    public Pet(int petID, String petName, LocalDate DOB, String breed, String color, boolean isVaccinated, String sex, String adoptionStatus, LocalDate entryDate, LocalDate adoptionDate, String petDescription) {
+    public Pet(int petID, String petName, String DOB, String breed, String color, boolean isVaccinated, String sex, String adoptionStatus, String entryDate, String adoptionDate, String petDescription) {
         this.petID = petID;
         this.petName = petName;
         this.DOB = DOB;
@@ -35,14 +34,14 @@ public class Pet {
 
     //ignores leap years but should be good enough. I don't think sloths live that long.
 //    public int getAge() {
-//        LocalDate thisDate = LocalDate.now();
+//        String thisDate = String.now();
 //        int days = thisDate.getYear() * 365 + thisDate.getDayOfYear();
 //        int daysAlive = DOB.getYear() * 365 + DOB.getDayOfYear();
 //        return (days - daysAlive) / 365;
 //    }
 //
 //    public int getTimeInShelter() {
-//        LocalDate thisDate = LocalDate.now();
+//        String thisDate = String.now();
 //        int days = thisDate.getYear() * 365 + thisDate.getDayOfYear();
 //        int daysAlive = entryDate.getYear() * 365 + entryDate.getDayOfYear();
 //        return (days - daysAlive) / 365;
@@ -65,11 +64,11 @@ public class Pet {
         this.petName = petName;
     }
 
-    public LocalDate getDOB() {
+    public String getDOB() {
         return DOB;
     }
 
-    public void setDOB(LocalDate DOB) {
+    public void setDOB(String DOB) {
         this.DOB = DOB;
     }
 
@@ -117,19 +116,19 @@ public class Pet {
         }
     }
 
-    public LocalDate getEntryDate() {
+    public String getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(LocalDate entryDate) {
+    public void setEntryDate(String entryDate) {
         this.entryDate = entryDate;
     }
 
-    public LocalDate getAdoptionDate() {
+    public String getAdoptionDate() {
         return adoptionDate;
     }
 
-    public void setAdoptionDate(LocalDate adoptionDate) {
+    public void setAdoptionDate(String adoptionDate) {
         this.adoptionDate = adoptionDate;
     }
 
