@@ -18,10 +18,10 @@ INSERT INTO pets(pet_name,DOB, breed, color, is_vaccinated, sex, adoption_status
 VALUES ('Raisin','1996-1-1', 'Upside Down Sloth', 'Blonde', false, 'Male', 'Available', 'Raisin is a sloth.');
 
 INSERT INTO pets(pet_name,DOB,  breed, color, is_vaccinated, sex, adoption_status, pet_description)
-VALUES ('Liane','2003-4-13', 'Upside Down Sloth', 'Blonde', true, 'Female', 'Adopted', 'Liane is a sloth.');
+VALUES ('Liane','2003-4-13', 'Upside Down Sloth', 'Blonde', true, 'Female', 'Available', 'Liane is a sloth.');
 
 INSERT INTO pets(pet_name,DOB,  breed, color, is_vaccinated, sex, adoption_status, pet_description)
-VALUES ('Lightning','2003-06-12', 'Upside Down Sloth', 'Reddish-Blonde', true, 'Male', 'Adopted', 'Lightning is a sloth.');
+VALUES ('Lightning','2003-06-12', 'Upside Down Sloth', 'Reddish-Blonde', true, 'Male', 'Available', 'Lightning is a sloth.');
 
 INSERT INTO pets(pet_name,DOB,breed,color,sex,adoption_status,is_vaccinated,entry_date,pet_description)
 VALUES('test name','1996-07-03','sloth','green','male','Available',true,'1997-07-03','this pet is not adopted');
