@@ -63,7 +63,7 @@ methods: {
 } 
 
 .image {
-  max-height: 80px;
+  max-height: 70px;
 }
 
 #dark-nav{

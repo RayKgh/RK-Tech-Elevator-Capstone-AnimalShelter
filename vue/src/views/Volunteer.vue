@@ -1,40 +1,60 @@
 <template>
-  <div class="pitch">
-      <h1>Why Volunteer?</h1>
-      <section> As a 100% volunteer run organization we are always looking for energetic and passionate folks who wish to give their time to help our cause. </section>
-<div class="create-reg">
-    <h2> Sign Up Today! </h2>
-</div>
-<form @submit.prevent="submit">
-<div id="names">
-<input v-model="applicant.firstName" type="text" id="fname" name="fname" placeholder="first name">
-<input v-model="applicant.lastName" type="text" id="lname" name="lname" placeholder="last name">
-</div>
+  <div class="volunteer-page">
+    <div class="volunteer">
+    <h1>Why Volunteer?</h1>
 
-<div id="email-div"> 
-<input v-model="applicant.email" type="text" id="email" name="email" placeholder="email address">
-</div>
+    <p> As a 100% volunteer run organization we are always looking for energetic and passionate folks who wish to give their time to help our cause. </p>
+  
+    <form @submit.prevent="submit">
+        <h2> Sign Up Today! </h2>
 
-<div id="phone-div"> 
-<input v-model="applicant.phoneNum" type="text" id="phonenum" name="phonenum" placeholder="Phone Number">
-</div>
+        <div id="names">
+          <div id="first-name">
+            <label for="fname">First Name</label>
+            <input v-model="applicant.firstName" type="text" id="fname" name="fname" placeholder="Dolly" required>  
+          </div>
 
-<div id="bday-submit">
-<input v-model="applicant.dob" type="text" id="dob" name="dob" placeholder="Date-of-birth">
-  <button type="submit" class="submitreg">
-          Submit
-      </button>
-</div>
-</form>
- <div class="signedup">
+          <div id="last-name">
+            <label for="lname">Last name</label>
+            <input v-model="applicant.lastName" type="text" id="lname" name="lname" placeholder="Parton" required>
+          </div>
+        </div>
+
+        <div id="email-div" class="input-box"> 
+          <label for="email">Email</label>
+          <input v-model="applicant.email" type="email" id="email" name="email" placeholder="DollyParton@email.com" required>
+        </div>
+
+        <div id="phone-div" class="input-box">
+          <label for="phonenum">Phone</label>
+          <input v-model="applicant.phoneNum" type="tel" id="phonenum" name="phonenum"  maxlength="10" placeholder="9251234567" required> 
+        </div>
+
+        <div id="bday-submit">
+          <div id="bday-box">
+            <label for="dob">Birthday</label>
+            <input v-model="applicant.dob" type="date" id="dob" name="dob" value="01/19/1946" required>
+          </div>
+
+          <div id="bday-btn">
+             <button type="submit" class="submitreg"> Submit </button>
+          </div>
+        </div>
+    </form>
+
+   
+    </div>
+
+   <div class="signedup">
       <h3>Already a volunteer?</h3>
       <button class="sign-in">
-        <router-link :to="{ name: 'home' }" class="sign-inpage">
+        <router-link :to="{ name: 'home' }" class="sign-in-link">
           Sign in here!
         </router-link>
       </button>
     </div>
   </div>
+  
 
 </template>
 
@@ -73,74 +93,83 @@ export default {
 
 <style scoped>
 
-h1{
-  font-size: 80px;
-  padding-left: 5%;
-}
-
-section{
+.volunteer-page{
   display: flex;
-  justify-content: center;
-  width: 37%;
-  padding-left: 5%;
-  font-size: 30px;
-  /* border: dashed white; */
+  justify-content: space-between;
+
 }
 
-.create-reg{
-  padding-top: 1%;
-  font-size: 30px;
-  padding-left: 10%;
-  /* border: dashed red; */
-}
-
-h2{
-  font-weight: 800;
-  margin-bottom: 30px;
-}
-
-#fname{
-  padding: 5px 5px 5px 5px;
-  border-radius: 50px;
-}
-
-#lname{
-   padding: 5px 5px 5px 5px;
-
-  border-radius: 50px;
+h1{
+  
+  font-size: 65px;
+  margin: 20px 80px 0;
   
 }
 
-#email{
-   padding: 5px 5px 5px 5px;
-   border-radius: 50px;
-   width: 30%;
+p {
+  width: 620px;
+  margin: -15px 80px 0 80px;
+  font-size: 25px;
+  text-transform: none;
 }
 
-#phonenum{
-   padding: 5px 5px 5px 5px;
-    border-radius: 50px;
-   width: 30%;
+form {
+  margin-left: 100px;
+  width: 380px;
+  margin-bottom: 250px;
+
 }
 
-#dob{
-   padding: 5px 5px 5px 5px;
-   border-radius: 50px;
+h2{
+  font-weight: 900;
+  margin: 30px 0 0 0;
+  text-align: center;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #59351F;
+}
+
+form * input {
+  padding: 10px 10px 10px 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  border: none;
+  width: 100%;
+}
+
+#names * input {
+  width:    180px;
   
 }
 
 label{
-  font-size: 30px;
+  font-size: 16px;
+  color: #335137;
+  margin-bottom: 0;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 
 input{
-  font-size: 25px;
-  color: #59351F;
-  font-weight: 600;
-  margin: 0;
+  font-size: 17px;
+  color: #335137;
+  font-weight: 300;
+  outline: none;
+  background-color: #f2ebe6;
   
 }
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.input-box > label {
+  padding: 0 20px;
+}
+
 
 input:focus,
 select:focus,
@@ -149,76 +178,104 @@ button:focus {
     outline: none;
 }
 
+#names{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+#names > div {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0px;
+}
+
+#names * label {
+  padding: 0 20px;
+}
+
+.signedup{
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+  font-size: 40px;
+  text-transform: uppercase;
+  margin: 0px 70px 0 0;
+  width: 30%;
+  height: 50%;
+  padding: 0;
+  padding-top: 10%;
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.sign-in{
+  border-radius: 50px;
+  border: 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  background-color: #de854e;
+  padding: 10px 50px;
+  margin-top: 20px;
+  font-size: 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.sign-in-link{
+  font-weight: bold;
+  color: #f2ebe6;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+
+form > * {
+  margin-bottom: 5px;
+}
+
+#bday-box {
+  padding: 0 40px 0 0;
+}
+
+#bday-box > label {
+  padding: 0 20px;
+}
+
+
+
+#bday-submit{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
 .submitreg{
    border-radius: 50px;
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #de854e;
   color: #f2ebe6;
-  padding: 10px 70px;
+  padding: 8px 25px;
   margin-top: 20px;
   font-weight: 800;
-  font-size: 25px;
+  font-size: 20px;
   text-transform: uppercase;
 }
 
-#bday-submit{
-  display: flex;
-  justify-content: space-between;
-  width: 30%;
+.submitreg > button {
+  color: red;
 }
 
-#names{
-  display: flex;
-  justify-content: space-between;
-  width: 30%;
-}
-
-#names > input {
-  margin-right: 20px;
-}
-
-.signedup{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-weight: 800;
+h3 {
+  font-size: 50px;
   color: #f2ebe6;
-  font-size: 40px;
-  text-transform: uppercase;
-  align-self: flex-end;
-  margin: 0 250px 0 0;
-  width: 30%;
-  height: 50%;
-  padding: 0;
-  padding-left: 70%;
-  padding-top: 10%;
-}
-
-.sign-in{
-   border-radius: 50px;
-  border: 0;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-  background-color: #de854e;
-  padding: 10px 50px;
-  margin-top: 20px;
-  font-size: 30px;
-  text-transform: uppercase;
-}
-
-.signedup{
-   font-weight: bold;
-  color: #f2ebe6;
-  text-decoration: none;
+  text-align: right;
   font-weight: 800;
 }
 
-form{
-  /* border: dashed blue; */
-  padding-left: 5%;
-}
 
-form > * {
-  margin-bottom: 20px;
-}
 </style>
