@@ -16,7 +16,7 @@ public class JdbcApplicantDao implements ApplicantDao{
     }
 
     @Override
-    public void sumbitAppication(Applicant applicant) {
+    public void submitApplication(Applicant applicant) {
         applicant.setDate(LocalDate.now());
 
         String sql = "INSERT INTO applications(application_date, first_name, last_name, DOB, phone_number, email_address) "

@@ -57,12 +57,13 @@ methods: {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 130px;
+  height: 100px;
   padding-left: 20px;
+  /* background-color: lightcoral; */
 } 
 
 .image {
-  max-height: 100px;
+  max-height: 80px;
 }
 
 #dark-nav{
@@ -76,10 +77,12 @@ methods: {
 
 .nav-items{
   display: flex;
-  width: 40%;
+  width: 35%;
   justify-content: space-between;
+  align-items: center;
   font-size: 25px;
   margin-right: 50px;
+  /* background-color: blueviolet; */
 }
 
 .nav-item {
