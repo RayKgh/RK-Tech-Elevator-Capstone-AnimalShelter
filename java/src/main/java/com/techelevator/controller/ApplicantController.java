@@ -18,6 +18,6 @@ public class ApplicantController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/volunteer")
     public void submit(@RequestBody Applicant applicant){
-        applicantDao.sumbitAppication(applicant);
+        applicantDao.submitApplication(applicant);
     }
 }
