@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import PetService from "../services/PetService";
 export default {
   name: "new-pet",
   data() {
@@ -58,22 +58,41 @@ export default {
     changeVaccinatedStatus() {
       this.pet.vaccinated = !this.pet.vaccinated;
     },
-  },
-  submit() {
-    axios
-      .post("/pets/add", this.pet)
-      .then((response) => {
-        if (response.status == 201) {
-          this.$router.push({ name: "home" });
-        }
-      })
-      .catch((error) => {
-        const response = error.response;
+    submit() {
+      const newPet = {
+        petName: this.pet.petName,
+        color: this.pet.color,
+        breed: this.pet.breed,
+        sex: this.pet.sex,
+        vaccinated: this.pet.vaccinated,
+        petDescription: this.pet.petDescription,
+        dob: this.pet.dob,
+      };
 
-        if (response.status === 400) {
-          this.submitError = true;
-        }
-      });
+      PetService.addNewPet(newPet)
+        .then((response) => {
+          if (response.status === 200 || response.status === 201) {
+            this.$router.push("/adopt");
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "adding");
+        });
+    },
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " pet. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg = "Error " + verb + " pet. Server could not be reached.";
+      } else {
+        this.errorMsg = "Error " + verb + " pet. Request could not be created.";
+      }
+    },
   },
 };
 </script>

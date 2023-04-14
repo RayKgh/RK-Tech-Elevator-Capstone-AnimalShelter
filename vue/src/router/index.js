@@ -105,16 +105,12 @@ const router = new Router({
     //   }
     // },
     {
-      path: '/pets/new',
+      path: '/adopt/new',
       name: 'new-pet',
       component: AddUpdatePet,
       meta: {
         requiresAuth: true
       }
-
-
-
-
     },
     {
       path: '/applicants',
