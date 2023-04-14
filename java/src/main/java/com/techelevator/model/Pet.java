@@ -14,6 +14,24 @@ public class Pet {
     private String entryDate;
     private String adoptionDate;
     private String petDescription;
+    private String source;
+    private String photoDescription;
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getPhotoDescription() {
+        return photoDescription;
+    }
+
+    public void setPhotoDescription(String photoDescription) {
+        this.photoDescription = photoDescription;
+    }
 
     public Pet(int petID, String petName, String DOB, String breed, String color, boolean isVaccinated, String sex, String adoptionStatus, String entryDate, String adoptionDate, String petDescription) {
         this.petID = petID;
