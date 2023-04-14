@@ -41,9 +41,9 @@ public class JdbcApplicantDao implements ApplicantDao{
     }
 
     @Override
-    public void approveApplicant(Applicant applicant) {
-        String sql = "UPDATE applications SET status = 'approved' WHERE application_id = ?";
-        jdbcTemplate.update(sql, applicant.getApplicationId());
+    public void updateApplicantStatus(Applicant applicant) {
+        String sql = "UPDATE applications SET status = ? WHERE application_id = ?";
+        jdbcTemplate.update(sql, applicant.getStatus(), applicant.getApplicationId());
     }
 
     private Applicant mapRowToApplicant(SqlRowSet rowSet) {
