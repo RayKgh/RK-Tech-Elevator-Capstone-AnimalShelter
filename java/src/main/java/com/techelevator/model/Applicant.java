@@ -14,6 +14,8 @@ public class Applicant {
     private String phoneNum;
     private String email;
 
+    public Applicant() {}
+
     public Applicant(int applicationId, LocalDate date, String status, String firstName, String lastName, String dob, String phoneNum, String email) {
         this.applicationId = applicationId;
         this.date = date;
@@ -28,6 +30,8 @@ public class Applicant {
     public int getApplicationId() {
         return applicationId;
     }
+
+
 
     public LocalDate getDate() {
         return date;

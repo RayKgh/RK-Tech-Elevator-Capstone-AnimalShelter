@@ -9,8 +9,11 @@ import Adopt from '../views/Adopt.vue'
 import UserHomePage from '../views/UserHomepage.vue'
 import Directory from '../views/Directory.vue'
 import Volunteer from '../views/Volunteer.vue'
-// import PetDetails from '../views/PetDetails.vue'
 import AddUpdatePet from '../views/AddUpdatePet.vue'
+
+// import PetDetails from '../views/PetDetails.vue'
+import Applicants from '../views/Applicants.vue'
+
 
 Vue.use(Router)
 
@@ -108,8 +111,19 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
 
+
+
+
+    },
+    {
+      path: '/applicants',
+      name: 'applicants',
+      component: Applicants,
+      meta: {
+        requiresAuth: false
+      },
+    },
   ]
 })
 

@@ -5,6 +5,9 @@ import com.techelevator.model.Applicant;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class ApplicantController {
@@ -20,4 +23,8 @@ public class ApplicantController {
     public void submit(@RequestBody Applicant applicant){
         applicantDao.submitApplication(applicant);
     }
+
+    @RequestMapping (path = "/applicants", method = RequestMethod.GET)
+    public List<Applicant> listApplicants() {return applicantDao.getPendingApplicants();}
+
 }
