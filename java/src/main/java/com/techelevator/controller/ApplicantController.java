@@ -27,4 +27,8 @@ public class ApplicantController {
     @RequestMapping (path = "/applicants", method = RequestMethod.GET)
     public List<Applicant> listApplicants() {return applicantDao.getPendingApplicants();}
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PutMapping("/approvedapplicant")
+    public void approve(@Valid @RequestBody Applicant applicant) { applicantDao.approveApplicant(applicant);}
+
 }

@@ -8,4 +8,6 @@ public interface ApplicantDao {
     void submitApplication(Applicant applicant);
 
     List<Applicant> getPendingApplicants();
+
+    void approveApplicant(Applicant applicant);
 }
