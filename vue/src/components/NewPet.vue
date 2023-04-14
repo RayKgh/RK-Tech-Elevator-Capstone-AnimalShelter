@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Add new pet details</h2>
-    <form>
+    <form @submit.prevent="submit()">
       <label for="name">Input sloth's name</label>
       <input type="text" name="name" id="name" v-model="pet.petName" />
 
@@ -71,6 +71,10 @@ export default {
     changeVaccinatedStatus() {
       this.pet.vaccinated = !this.pet.vaccinated;
     },
+    methodToForceUpdate() {
+      this.$forceUpdate();
+    },
+
     submit() {
       const newPet = {
         petName: this.pet.petName,
@@ -88,6 +92,7 @@ export default {
         .then((response) => {
           if (response.status === 200 || response.status === 201) {
             this.$router.push("/updatepets");
+            this.methodToForceUpdate();
           }
         })
         .catch((error) => {
