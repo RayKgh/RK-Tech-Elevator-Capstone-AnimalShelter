@@ -72,9 +72,5 @@ public class PetController {
         } else {
             throw new IllegalAccessException("Must be logged in to add a pet");
         }
-
-
-
     }
-
 }
