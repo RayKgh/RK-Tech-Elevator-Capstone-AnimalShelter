@@ -32,6 +32,17 @@
       <label for="date">add sloth's birthday</label>
       <input type="date" name="dob" id="dob" v-model="pet.dob" />
 
+      <label for="photoUrl"> add sloth photo </label>
+      <input type="text" name="photoUrl" id="photoUrl" v-model="pet.source" />
+
+      <textarea
+        type="text"
+        name="description"
+        id="description"
+        v-model="pet.description"
+      />
+      <label> add photo desciption </label>
+
       <button type="submit">submit new sloth</button>
     </form>
   </div>
@@ -51,6 +62,8 @@ export default {
         vaccinated: false,
         petDescription: "",
         dob: "",
+        source: "",
+        photoDescription: "",
       },
     };
   },
@@ -67,6 +80,8 @@ export default {
         vaccinated: this.pet.vaccinated,
         petDescription: this.pet.petDescription,
         dob: this.pet.dob,
+        source: this.pet.source,
+        photoDescription: this.pet.photoDescription,
       };
 
       PetService.addNewPet(newPet)

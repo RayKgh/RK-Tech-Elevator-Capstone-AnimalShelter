@@ -38,7 +38,7 @@ public class JdbcPetDao implements PetDao{
         return pet;
     }
 
-    public Pet addNewPet(Pet pet){
+    public Integer addNewPet(Pet pet){
         if(pet==null){
             throw new IllegalArgumentException();
         }
@@ -46,7 +46,7 @@ public class JdbcPetDao implements PetDao{
         String sql = "INSERT INTO pets(pet_name, DOB, breed, color, sex, adoption_status, is_vaccinated, entry_date, pet_description) VALUES(?,?,?,?,?,?,?,?,?) RETURNING pet_id;";
         Integer newPetID = jdbcTemplate.queryForObject(sql,Integer.class,pet.getPetName(), LocalDate.parse(pet.getDOB()),pet.getBreed(),pet.getColor(),pet.getSex(),"Available",pet.isVaccinated(),LocalDate.now(),pet.getPetDescription());
         if(newPetID!=null){
-            return getPetByID(newPetID);
+            return newPetID;
         } else {
             return null;
         }

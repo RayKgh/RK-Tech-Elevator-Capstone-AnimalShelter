@@ -27,6 +27,29 @@ public class JdbcPhotoDao implements PhotoDao {
         return photos;
     }
 
+    public Photo getPhotoById(int photoId) {
+        String sql = "SELECT * FROM photos WHERE photo_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, photoId);
+        if (results.next()) {
+            return mapRowToPhoto(results);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public Photo addNewPhoto(Photo photo) {
+       String sql = "INSERT INTO photos (pet_id, source, description)" +
+               "VALUES (?,?,?)" + "RETURNING photo_id";
+       Integer newPhotoId = jdbcTemplate.queryForObject(sql, Integer.class, photo.getPetID(), photo.getSource(),photo.getDescription());
+       if(newPhotoId != null) {
+           return getPhotoById(newPhotoId);
+       } else{
+           return null;
+       }
+
+    }
+
     public Photo mapRowToPhoto(SqlRowSet results){
         Photo photo = new Photo();
         photo.setPhotoID(results.getInt("photo_id"));
@@ -35,4 +58,5 @@ public class JdbcPhotoDao implements PhotoDao {
         photo.setDescription(results.getString("description"));
         return photo;
     }
+
 }
