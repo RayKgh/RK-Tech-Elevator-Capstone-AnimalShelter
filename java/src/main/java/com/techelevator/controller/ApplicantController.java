@@ -28,7 +28,7 @@ public class ApplicantController {
     public List<Applicant> listApplicants() {return applicantDao.getPendingApplicants();}
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PutMapping("/approvedapplicant")
-    public void approve(@Valid @RequestBody Applicant applicant) { applicantDao.approveApplicant(applicant);}
+    @PutMapping("/applicant")
+    public void statusChange(@Valid @RequestBody Applicant applicant) { applicantDao.updateApplicantStatus(applicant);}
 
 }
