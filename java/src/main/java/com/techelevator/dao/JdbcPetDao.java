@@ -52,6 +52,23 @@ public class JdbcPetDao implements PetDao{
         }
     }
 
+    public Integer updatePet(Pet pet){
+        if(pet==null){
+            throw new IllegalArgumentException();
+        }
+
+        String sql = "UPDATE pets\n" +
+                "\tSET pet_name=?, dob=?, breed=?, color=?, sex=?, adoption_status=?, is_vaccinated=?, entry_date=?, adoption_date=?, pet_description=?\n" +
+                "\tWHERE pet_id=? RETURNING pet_id;";
+
+        Integer updatedPetID = jdbcTemplate.queryForObject(sql,Integer.class,pet.getPetName(),pet.getDOB(),pet.getBreed(),pet.getColor(),pet.getSex(),pet.getAdoptionStatus(),pet.isVaccinated(),pet.getEntryDate(),pet.getAdoptionDate(),pet.getPetDescription());
+        if(updatedPetID!=null){
+            return updatedPetID;
+        } else {
+            return null;
+        }
+    }
+
     private Pet mapRowToPet(SqlRowSet results){
         Pet pet = new Pet();
         pet.setPetID(results.getInt("pet_id"));

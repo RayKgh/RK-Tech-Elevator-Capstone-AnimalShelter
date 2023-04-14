@@ -35,30 +35,30 @@ public class PetController {
     }
 
     @GetMapping("/pets")
-    public List<Pet> listPets(){
+    public List<Pet> listPets() {
 
         //check that something is returned
-        if(petDao.listAllPets()==null){
+        if (petDao.listAllPets() == null) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nothing pulled from database");
         }
         return petDao.listAllPets();
     }
 
     @PostMapping("/pets/add")
-    public void addPet(@RequestBody @Valid Pet pet,Principal principal) throws IllegalAccessException {
+    public void addPet(@RequestBody @Valid Pet pet, Principal principal) throws IllegalAccessException {
 
         User user = userDao.findByUsername(principal.getName());
         //the logged in user
 
         //check to see if the user has correct role
-        if(user.getAuthorities().contains(new Authority("ROLE_USER")) || user.getAuthorities().contains(new Authority("ROLE_ADMIN"))){
-            if(pet!=null){
+        if (user.getAuthorities().contains(new Authority("ROLE_USER")) || user.getAuthorities().contains(new Authority("ROLE_ADMIN"))) {
+            if (pet != null) {
 //            Pet newPet = new Pet(pet.getPetID(),pet.getPetName(),pet.getDOB(),pet.getBreed(),pet.getColor(),pet.isVaccinated(),pet.getSex(),"Available", LocalDate.now(),null,pet.getPetDescription());
                 pet.setAdoptionStatus("Available");
                 pet.setEntryDate(LocalDate.now().toString());
                 pet.setAdoptionDate(null);
                 Integer newPetID = petDao.addNewPet(pet);
-                if(newPetID==null) {
+                if (newPetID == null) {
                     throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED, "The pet was not added to the database");
                 }
                 Photo photo = new Photo();
@@ -71,6 +71,19 @@ public class PetController {
             }
         } else {
             throw new IllegalAccessException("Must be logged in to add a pet");
+        }
+    }
+
+    @PutMapping("/pets/update")
+    public void updatePet(@RequestBody @Valid Pet pet, Principal principal) {
+        User user = userDao.findByUsername(principal.getName());
+        //the logged in user
+
+        //check to see if the user has correct role
+        if (user.getAuthorities().contains(new Authority("ROLE_USER")) || user.getAuthorities().contains(new Authority("ROLE_ADMIN"))) {
+            if (pet != null) {
+                Integer updatedPetID = petDao.updatePet(pet);
+            }
         }
     }
 }
