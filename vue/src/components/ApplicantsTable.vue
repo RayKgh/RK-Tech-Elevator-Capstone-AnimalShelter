@@ -45,12 +45,13 @@ export default {
 
 <style scoped>
 .applicants-table {
-  margin: 0 50px;
+  margin: 50px;
 }
 
 h1 {
   font-size: 50px;
-  margin: 50px 0 0px 240px;
+  text-align: center;
+  margin-right: 20vw;
 }
 
 table {
