@@ -18,11 +18,18 @@
           <td class="left lname">{{ applicant.lastName }}</td>
           <td class="left phone">{{ applicant.phoneNum }}</td>
           <td class="left email">{{ applicant.email }}</td>
-          <td class="has-icon"><i class="fa-solid fa-square-check"></i></td>
-          <td class="has-icon"><i class="fa-solid fa-square-xmark"></i></td>
+          <td class="has-icon" @click="approveApplicant(applicant, 'approved')">
+            <i class="fa-solid fa-square-check"></i>
+          </td>
+          <td class="has-icon" @click="approveApplicant(applicant, 'declined')">
+            <i class="fa-solid fa-square-xmark"></i>
+          </td>
         </tr>
       </tbody>
     </table>
+    <div role="alert" v-if="submitError" class="submit-error">
+      There was an error processing your request. Please try again later.
+    </div>
   </div>
 </template>
 
@@ -33,12 +40,34 @@ export default {
   data() {
     return {
       applicants: [],
+      submitError: false,
     };
   },
   created() {
     ApplicantService.getApplicants().then((response) => {
       this.applicants = response.data;
     });
+  },
+  methods: {
+    approveApplicant(applicant, status) {
+      applicant.status = status;
+      ApplicantService.updateApplicantStatus(applicant)
+        .then((response) => {
+          if (response.status == 201) {
+            this.applicants = this.applicants.filter(
+              (a) => a.applicationId != applicant.applicationId
+            );
+          }
+        })
+        .catch((error) => {
+          const response = error.response;
+
+          if (response.status === 400) {
+            this.submitError = true;
+            applicant.status = "pending";
+          }
+        });
+    },
   },
 };
 </script>
