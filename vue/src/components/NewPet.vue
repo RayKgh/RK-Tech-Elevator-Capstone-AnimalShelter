@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Add new pet details</h2>
-    <form @submit.prevent="submit">
+    <form>
       <label for="name">Input sloth's name</label>
       <input type="text" name="name" id="name" v-model="pet.petName" />
 
@@ -87,7 +87,7 @@ export default {
       PetService.addNewPet(newPet)
         .then((response) => {
           if (response.status === 200 || response.status === 201) {
-            this.$router.push("/adopt");
+            this.$router.push("/updatepets");
           }
         })
         .catch((error) => {
