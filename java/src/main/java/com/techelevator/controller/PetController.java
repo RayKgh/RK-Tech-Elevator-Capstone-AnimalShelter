@@ -40,7 +40,7 @@ public class PetController {
         return petDao.listAllPets();
     }
 
-    @PostMapping("/pets/add")
+    @PostMapping("/pets/add") 
     public void addPet(@RequestBody @Valid Pet pet, Principal principal) throws IllegalAccessException {
 
         User user = userDao.findByUsername(principal.getName());
