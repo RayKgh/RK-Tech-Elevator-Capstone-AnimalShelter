@@ -119,5 +119,6 @@ ul {
   flex-grow: 1;
   margin: 5px;
   font-size: 15px;
+  text-transform: none;
 }
 </style>
