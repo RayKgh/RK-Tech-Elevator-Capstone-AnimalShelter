@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Pet;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
@@ -33,9 +34,13 @@ public class JdbcPetDao implements PetDao{
 
     public Pet getPetByID(int id){
         Pet pet = new Pet();
-        String sql = "SELECT * FROM pets WHERE pet_id =?;";
+        String sql = "SELECT * FROM pets WHERE pet_id = ? ;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql,id);
+        if(result.next()){
+            pet = mapRowToPet(result);
+        }
         return pet;
+
     }
 
     public Integer addNewPet(Pet pet){

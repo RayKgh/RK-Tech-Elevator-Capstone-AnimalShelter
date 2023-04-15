@@ -10,7 +10,7 @@ import UserHomePage from '../views/UserHomepage.vue'
 import Directory from '../views/Directory.vue'
 import Volunteer from '../views/Volunteer.vue'
 import AddUpdatePet from '../views/AddUpdatePet.vue'
-
+import UpdatePet from '../views/UpdatePet.vue'
 // import PetDetails from '../views/PetDetails.vue'
 import Applicants from '../views/Applicants.vue'
 
@@ -105,9 +105,17 @@ const router = new Router({
     //   }
     // },
     {
-      path: '/adopt/new',
+      path: '/updatepets/new',
       name: 'new-pet',
       component: AddUpdatePet,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/updatepets/:petID',
+      name: 'update-pet',
+      component: UpdatePet,
       meta: {
         requiresAuth: true
       }

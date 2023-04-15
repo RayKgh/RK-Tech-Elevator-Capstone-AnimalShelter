@@ -12,6 +12,10 @@ export default {
 
     addNewPet(pet) {
         return http.post('/pets/add', pet)
+    },
+
+    getPetByID(petID) {
+        return http.get(`/pets/${petID}`)
     }
 
 }

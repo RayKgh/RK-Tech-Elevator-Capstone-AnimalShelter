@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <h1>edit pets</h1>
-
     <pet-table></pet-table>
     <router-link v-bind:to="{ name: 'new-pet' }"
       ><button>Add new pet</button></router-link
@@ -11,13 +10,31 @@
 
 <script>
 import PetTable from "../components/PetTable.vue";
+import PetService from "../services/PetService.js";
 export default {
   name: "user-homepage",
-  data() {},
   components: {
     PetTable,
   },
-  methods: {},
+  created() {
+    PetService.getAllPets()
+      .then((pets) => {
+        this.$store.commit("SET_ALL_PETS", pets.data);
+      })
+      .catch((err) => {
+        if (err.response) {
+          this.errorMsg = `error loading pets. response was ${err.response.statusText}`;
+          alert(this.errorMsg);
+        } else if (err.request) {
+          this.errorMsg = `error loading pets. something went wrong. probably not your fault. well have someone look into it and get back to you.`;
+          alert(this.errorMsg);
+        } else {
+          this.errorMsg =
+            "sorry. didn't happen. not sure why. don't bother trying again";
+          alert(this.errorMsg);
+        }
+      });
+  },
 };
 </script>
 

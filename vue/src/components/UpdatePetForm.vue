@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h2>Add new pet details</h2>
+    <h2>Update sloths details</h2>
     <form @submit.prevent="submit()">
       <label for="name">Input sloth's name</label>
-      <input type="text" name="name" id="name" v-model="pet.petName" />
+      <input type="text" name="name" id="name" v-model="this.pet.petName" />
 
       <label for="color">input sloth's color</label>
       <input type="text" name="color" id="color" v-model="pet.color" />
@@ -39,26 +39,36 @@
 
 <script>
 export default {
-  name: "update-pet",
+  name: "update-pet-form",
   data() {
     return {
       pet: {
-        petName: "",
-        color: "",
-        breed: "",
-        sex: "",
-        vaccinated: false,
-        petDescription: "",
-        dob: "",
+        // test: "test",
+        // petName: this.pets.petName,
+        // color: this.pets.color,
+        // breed: this.pets.breed,
+        // sex: this.pets.sex,
+        // vaccinated: this.pets.vaccinated,
+        // petDescription: this.pets.petDescription,
+        // dob: this.pets.dob,
+        // adoptionDate: this.pets.adoptionDate,
+        // adoptionStatus: this.pets.adoptionStatus,
+        // entryDate: this.pet.entryDate,
       },
     };
+  },
+  computed: {
+    pets() {
+      return this.$store.state.pets.filter(
+        (pet) => pet.petID == this.$route.params.petID
+      );
+    },
   },
   methods: {
     changeVaccinatedStatus() {
       this.pet.vaccinated = !this.pet.vaccinated;
     },
   },
-  computed: {},
 };
 </script>
 

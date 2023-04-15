@@ -44,6 +44,15 @@ public class PetController {
         return petDao.listAllPets();
     }
 
+    @GetMapping("/pets/{id}")
+    public Pet getPetByID(@PathVariable int id){
+        Pet pet = petDao.getPetByID(id);
+        if(pet==null){
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nothing pulled from database");
+        }
+        return pet;
+    }
+
     @PostMapping("/pets/add")
     public void addPet(@RequestBody @Valid Pet pet, Principal principal) throws IllegalAccessException {
 
