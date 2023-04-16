@@ -27,9 +27,7 @@
           class="passWord"
         />
       </div>
-      <button type="submit" class="signIn">
-          Sign in
-      </button>
+      <button type="submit" class="signIn">Sign in</button>
     </form>
     <div class="registervol">
       <h2>Not registered as a volunteer?</h2>
@@ -65,7 +63,11 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push({name: "home"});
+            if (this.user.password === "default") {
+              this.$router.push({ name: "update-password" });
+            } else {
+              this.$router.push({ name: "home" });
+            }
           }
         })
         .catch((error) => {
@@ -173,7 +175,6 @@ label {
   margin-top: 20px;
   font-size: 30px;
   text-transform: uppercase;
-  
 }
 
 #login {
@@ -188,28 +189,27 @@ label {
   height: 80vh;
 }
 
-h1{
+h1 {
   margin: 0 0 25px;
 }
 
-h2{
+h2 {
   color: #f2ebe6;
   margin-top: 100px;
 }
 
-input{
+input {
   font-size: 25px;
-  color: #59351F;
+  color: #59351f;
   font-weight: 600;
   margin: 0;
-  
 }
 
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
 </style>
 

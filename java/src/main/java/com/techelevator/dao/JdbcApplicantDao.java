@@ -51,7 +51,7 @@ public class JdbcApplicantDao implements ApplicantDao{
     public void addUser(Applicant applicant) {
         String username = applicant.getFirstName() + "." +applicant.getLastName();
         String role = "ROLE_USER";
-        String password_hash = new BCryptPasswordEncoder().encode("password");
+        String password_hash = new BCryptPasswordEncoder().encode("default");
 
         String sql =    "INSERT INTO users(application_id, username, password_hash, role, first_name, last_name, dob, phone_number, email_address) "
                     +   "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";

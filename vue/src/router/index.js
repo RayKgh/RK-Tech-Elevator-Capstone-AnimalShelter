@@ -13,6 +13,7 @@ import AddUpdatePet from '../views/AddUpdatePet.vue'
 import UpdatePet from '../views/UpdatePet.vue'
 // import PetDetails from '../views/PetDetails.vue'
 import Applicants from '../views/Applicants.vue'
+import UpdatePassword from '../views/UpdatePassword.vue'
 
 
 Vue.use(Router)
@@ -127,7 +128,15 @@ const router = new Router({
       meta: {
         requiresAuth: true,
         isAdmin: true,
-        
+
+      },
+    },
+    {
+      path: '/updatepassword',
+      name: 'update-password',
+      component: UpdatePassword,
+      meta: {
+        requiresAuth: true,
       },
     },
   ]
@@ -141,9 +150,9 @@ router.beforeEach((to, from, next) => {
   const isAdmin = to.matched.some(x => x.meta.isAdmin);
 
   // If it does and they are not logged in, send the user to "/login"
-   if (requiresAuth && store.state.token === '' ) {
+  if (requiresAuth && store.state.token === '') {
     next("/login");
-  } else if(isAdmin && store.state.user.authorities[0].name != 'ROLE_ADMIN') {
+  } else if (isAdmin && store.state.user.authorities[0].name != 'ROLE_ADMIN') {
     next("/");
   } else {
     // Else let them go to their next destination

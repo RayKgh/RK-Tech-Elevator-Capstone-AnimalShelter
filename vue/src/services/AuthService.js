@@ -10,13 +10,18 @@ export default {
     return axios.post('/register', user)
   },
 
+  updatePassword(newPassword) {
+    return axios.put('/newpassword', newPassword)
+  },
+
   // adopt() {
   //   return axios.post('/adopt', )
-  // }
+  // },
 
-  
 
-  
-  
+
+
+
+
 
 }
