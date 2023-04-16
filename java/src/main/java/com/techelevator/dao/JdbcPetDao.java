@@ -57,7 +57,7 @@ public class JdbcPetDao implements PetDao{
         }
     }
 
-    public Integer updatePet(Pet pet){
+    public Integer updatePet(Pet pet, int id){
         if(pet==null){
             throw new IllegalArgumentException();
         }
@@ -66,7 +66,7 @@ public class JdbcPetDao implements PetDao{
                 "\tSET pet_name=?, dob=?, breed=?, color=?, sex=?, adoption_status=?, is_vaccinated=?, entry_date=?, adoption_date=?, pet_description=?\n" +
                 "\tWHERE pet_id=? RETURNING pet_id;";
 
-        Integer updatedPetID = jdbcTemplate.queryForObject(sql,Integer.class,pet.getPetName(),pet.getDOB(),pet.getBreed(),pet.getColor(),pet.getSex(),pet.getAdoptionStatus(),pet.isVaccinated(),pet.getEntryDate(),pet.getAdoptionDate(),pet.getPetDescription());
+        Integer updatedPetID = jdbcTemplate.queryForObject(sql,Integer.class,pet.getPetName(),pet.getDOB()!=null ? LocalDate.parse(pet.getDOB()) : null,pet.getBreed(),pet.getColor(),pet.getSex(),pet.getAdoptionStatus(),pet.isVaccinated(),pet.getEntryDate()!=null ? LocalDate.parse(pet.getEntryDate()) : null,pet.getAdoptionDate()!=null ? LocalDate.parse(pet.getAdoptionDate()) : null,pet.getPetDescription(),id);
         if(updatedPetID!=null){
             return updatedPetID;
         } else {
