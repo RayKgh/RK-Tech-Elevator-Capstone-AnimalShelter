@@ -10,4 +10,6 @@ public interface ApplicantDao {
     List<Applicant> getPendingApplicants();
 
     void updateApplicantStatus(Applicant applicant);
+
+    void addUser(Applicant applicant);
 }
