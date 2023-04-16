@@ -29,6 +29,11 @@ public class ApplicantController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PutMapping("/applicant")
-    public void statusChange(@Valid @RequestBody Applicant applicant) { applicantDao.updateApplicantStatus(applicant);}
+    public void statusChange(@Valid @RequestBody Applicant applicant) {
+        applicantDao.updateApplicantStatus(applicant);
+        if (applicant.getStatus().equals("approved")) {
+            applicantDao.addUser(applicant);
+        }
+    }
 
 }

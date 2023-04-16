@@ -125,7 +125,9 @@ const router = new Router({
       name: 'applicants',
       component: Applicants,
       meta: {
-        requiresAuth: false
+        requiresAuth: true,
+        isAdmin: true,
+        
       },
     },
   ]
@@ -136,14 +138,18 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
+  const isAdmin = to.matched.some(x => x.meta.isAdmin);
 
   // If it does and they are not logged in, send the user to "/login"
-  if (requiresAuth && store.state.token === '') {
+   if (requiresAuth && store.state.token === '' ) {
     next("/login");
+  } else if(isAdmin && store.state.user.authorities[0].name != 'ROLE_ADMIN') {
+    next("/");
   } else {
     // Else let them go to their next destination
     next();
   }
+
 });
 
 export default router;
