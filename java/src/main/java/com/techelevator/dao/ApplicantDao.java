@@ -9,5 +9,5 @@ public interface ApplicantDao {
 
     List<Applicant> getPendingApplicants();
 
-    void approveApplicant(Applicant applicant);
+    void updateApplicantStatus(Applicant applicant);
 }

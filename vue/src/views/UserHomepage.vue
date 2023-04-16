@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1>edit pets</h1>
+
     <pet-table></pet-table>
     <router-link v-bind:to="{ name: 'new-pet' }"
       ><button>Add new pet</button></router-link
