@@ -1,38 +1,100 @@
 <template>
-  <div>
+  <div class="page">
     <h2>Update sloths details</h2>
-    <form @submit.prevent="submit()">
-      <label for="name">Input sloth's name</label>
-      <input type="text" name="name" id="name" v-model="this.pet.petName" />
+    <form @submit.prevent="submit()" class="form">
+      <div class="section-one">
+        <div class="breed">
+          <label for="breed">Choose a Breed:</label>
 
-      <label for="color">input sloth's color</label>
-      <input type="text" name="color" id="color" v-model="pet.color" />
+          <select name="breed" id="breed">
+            <option value="pygmy">Pygmy three-toed sloth</option>
+            <option value="maned">Maned sloth</option>
+            <option value="pale-throated">Pale-throated sloth</option>
+            <option value="brown-throated">Brown-throated sloth</option>
+            <option value="linnaeus">Linnaeus’s two-toed sloth</option>
+            <option value="hoffman">Hoffman’s two-toed sloth</option>
+          </select>
+        </div>
 
-      <label for="breed">input sloth's breed</label>
-      <input type="text" name="breed" id="breed" v-model="pet.breed" />
+        <div class="sex">
+          <label for="sex">Choose the Sex:</label>
 
-      <label for="sex">input sloth's sex</label>
-      <input type="text" name="sex" id="sex" v-model="pet.sex" />
+          <select name="sex" id="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
 
-      <label for="is-vaccinated">is vaccinated</label>
-      <input
-        type="checkbox"
-        name="vaccinated"
-        id="vaccinated"
-        @change="changeVaccinatedStatus()"
-      />
+        <div class="color">
+          <label for="color">Choose the color:</label>
+          <select name="color" id="color">
+            <option value="brown">Brown</option>
+            <option value="grey">Grey</option>
+            <option value="black">Black</option>
+            <option value="white">White</option>
+            <option value="green">Green</option>
+          </select>
+        </div>
+      </div>
+      <div class="section-two">
+        <div class="name">
+          <label>Enter Sloth Name: </label>
+          <div id="name-id">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              v-model="pet.petName"
+              placeholder="Lightning"
+            />
+          </div>
+        </div>
 
-      <label for="description">describe the sloth</label>
-      <textarea
-        type="text"
-        name="desciption"
-        id="description"
-        v-model="pet.petDescription"
-      />
-      <label for="date">add sloth's birthday</label>
-      <input type="date" name="dob" id="dob" v-model="pet.dob" />
+          <div class="vaccinated">
+          <label> Are they Vaccinnated? Check if yes: </label>
+          <div id="vac-id">
+            <input
+              type="checkbox"
+              name="vaccinated"
+              id="vaccinated"
+              @change="changeVaccinatedStatus()"
+            />
+          </div>
+        </div>
 
-      <button type="submit">submit new sloth</button>
+         <div class="dob">
+          <label>Enter Date of Birth: </label>
+          <div id="dob-id">
+            <input
+              type="date"
+              name="dob"
+              id="dob"
+              v-model="pet.dob"
+              placeholder="06/12/2003"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="section-three">
+
+          <div class="pet-desc">
+          <label>Enter Description of Sloth: </label>
+          <div id="pet-id">
+            <textarea
+              type="text"
+              name="desciption"
+              id="description"
+              v-model="pet.petDescription"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- <div></div> -->
+
+      <div class="submit-btn">
+        <button type="submit" id="submit-btn">submit updates</button>
+      </div>
     </form>
   </div>
 </template>
@@ -73,4 +135,207 @@ export default {
 </script>
 
 <style scoped>
+#vac-id{
+  display: flex;
+}
+
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-one {
+  /* width: 2000px;
+  height: 200px; */
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* border: dashed blue; */
+}
+
+.section-two {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* justify-items: center; */
+  /* border: dotted black; */
+}
+
+.section-three {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* border: double yellow; */
+}
+
+#name-id * input {
+  width: 180px;
+}
+
+h2 {
+  font-weight: 900;
+  margin: 30px 0 0 0;
+  text-align: center;
+  font-size: 60px;
+  text-transform: uppercase;
+  color: #59351f;
+}
+
+form * input {
+  padding: 10px 10px 10px 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  /* border: dotted black; */
+  width: 250px;
+  background-color: white;
+}
+
+form * textarea {
+  padding: 10px 10px 10px 20px;
+  border: 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  /* border: dotted black; */
+  width: 600px;
+  height: 150px;
+  background-color: white;
+}
+
+form * select {
+  padding: 10px 10px 10px 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  /* border: dotted black; */
+  width: 250px;
+  background-color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  /* border: dashed red; */
+  margin: 50px 100px 175px;
+  width: 900px;
+  /* background: repeating-linear-gradient(
+#f2ebe6 ,
+ #de854e 10px,
+#de854e 10px,
+#de854e 11px
+); */
+  background-color: #f2ebe6;
+  border: thick double #de854e;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.color {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.breed {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.vaccinated {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px;
+}
+
+#vaccinated {
+  width: 15px;
+  height: 15px;
+}
+
+.sex {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.pet-desc {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.photo-desc {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.dob {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.photo-url {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.submit-btn {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+#submit-btn {
+  border-radius: 50px;
+  border: 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  background-color: #de854e;
+  color: white;
+  padding: 8px 25px;
+  margin-top: 20px;
+  font-weight: 800;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 20px;
+}
+
+label {
+  font-size: 16px;
+  color: #335137;
+  margin-bottom: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+input {
+  display: table;
+  font-size: 17px;
+  color: #335137;
+  font-weight: 300;
+  outline: none;
+  /* background-color: #f2ebe6; */
+  /* border: dotted blue; */
+}
+
+input::placeholder {
+  padding-left: 15px;
+}
+
+select {
+  border-radius: 50px;
+  width: 70px;
+}
 </style>
