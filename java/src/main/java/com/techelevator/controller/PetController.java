@@ -83,15 +83,15 @@ public class PetController {
         }
     }
 
-    @PutMapping("/pets/update")
-    public void updatePet(@RequestBody @Valid Pet pet, Principal principal) {
+    @PutMapping("/pets/{id}/update")
+    public void updatePet(@RequestBody @Valid Pet pet, Principal principal, @PathVariable int id) {
         User user = userDao.findByUsername(principal.getName());
         //the logged in user
 
         //check to see if the user has correct role
         if (user.getAuthorities().contains(new Authority("ROLE_USER")) || user.getAuthorities().contains(new Authority("ROLE_ADMIN"))) {
             if (pet != null) {
-                Integer updatedPetID = petDao.updatePet(pet);
+                Integer updatedPetID = petDao.updatePet(pet, id);
             }
         }
     }

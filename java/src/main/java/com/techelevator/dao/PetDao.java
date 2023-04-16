@@ -13,5 +13,5 @@ public interface PetDao {
 
     Integer addNewPet(Pet pet);
 
-    Integer updatePet(Pet pet);
+    Integer updatePet(Pet pet, int id);
 }
