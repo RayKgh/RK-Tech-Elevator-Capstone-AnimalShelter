@@ -4,6 +4,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Applicant;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -44,6 +45,17 @@ public class JdbcApplicantDao implements ApplicantDao{
     public void updateApplicantStatus(Applicant applicant) {
         String sql = "UPDATE applications SET status = ? WHERE application_id = ?";
         jdbcTemplate.update(sql, applicant.getStatus(), applicant.getApplicationId());
+    }
+
+    @Override
+    public void addUser(Applicant applicant) {
+        String username = applicant.getFirstName() + "." +applicant.getLastName();
+        String role = "ROLE_USER";
+        String password_hash = new BCryptPasswordEncoder().encode("password");
+
+        String sql =    "INSERT INTO users(application_id, username, password_hash, role, first_name, last_name, dob, phone_number, email_address) "
+                    +   "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        jdbcTemplate.update(sql, applicant.getApplicationId(), username, password_hash, role, applicant.getFirstName(), applicant.getLastName(),applicant.getDob(), applicant.getPhoneNum(), applicant.getEmail());
     }
 
     private Applicant mapRowToApplicant(SqlRowSet rowSet) {
