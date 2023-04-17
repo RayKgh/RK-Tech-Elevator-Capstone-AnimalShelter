@@ -59,8 +59,8 @@ export default {
 
 h2 {
   font-weight: 900;
-  /* margin: 30px 0 0 0;
-  text-align: center; */
+ margin-left: 20px;
+  text-align: center; 
   font-size: 60px;
   text-transform: uppercase;
   color: #335137;
