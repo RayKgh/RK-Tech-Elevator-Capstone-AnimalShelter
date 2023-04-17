@@ -1,11 +1,14 @@
 <template>
   <div class="home">
-    <h2>Pet List</h2>
-
+    <div class="new-pet">
+      <h2>Pet List</h2>
+      <router-link v-bind:to="{ name: 'new-pet' }">
+        <button class="btn">
+          <i class="fa-solid fa-plus fa-large" id="plus"></i>Add new pet
+        </button>
+      </router-link>
+    </div>
     <pet-table></pet-table>
-    <router-link v-bind:to="{ name: 'new-pet' }"
-      ><button>Add new pet</button></router-link
-    >
   </div>
 </template>
 
@@ -40,12 +43,45 @@ export default {
 </script>
 
 <style>
+.new-pet {
+  display: flex;
+  justify-content: space-between;
+
+  width: 1200px;
+}
+
+.home {
+  display: grid;
+  justify-items: center;
+
+  margin: 40px;
+}
+
 h2 {
   font-weight: 900;
-  margin: 30px 0 0 0;
-  text-align: center;
+  /* margin: 30px 0 0 0;
+  text-align: center; */
   font-size: 60px;
   text-transform: uppercase;
-   color: #335137
+  color: #335137;
+}
+
+.btn {
+  border: dashed black;
+  border-radius: 50px;
+  border: 0;
+  box-shadow: 0 4px 4px black;
+  background-color: #de854e;
+  color: white;
+  padding: 8px 25px;
+  margin-top: 20px;
+  font-weight: 800;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 20px;
+}
+
+#plus {
+  margin: 5px;
 }
 </style>

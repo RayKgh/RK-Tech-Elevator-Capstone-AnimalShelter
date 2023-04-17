@@ -15,7 +15,6 @@
             <option value="linnaeus">Linnaeus’s two-toed sloth</option>
             <option value="hoffman">Hoffman’s two-toed sloth</option>
           </select>
-    
         </div>
         <div class="sex">
           <label for="sex">Choose the Sex:</label>
@@ -24,7 +23,6 @@
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
-        
         </div>
 
         <div class="color">
@@ -36,8 +34,6 @@
             <option value="white">White</option>
             <option value="green">Green</option>
           </select>
-
-        
         </div>
       </div>
 
@@ -205,13 +201,10 @@ export default {
 }
 
 .section-one {
-  /* width: 2000px;
-  height: 200px; */
   margin: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* border: dashed blue; */
 }
 
 .section-two {
@@ -219,8 +212,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* justify-items: center; */
-  /* border: dotted black; */
 }
 
 .section-three {
@@ -228,7 +219,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* border: double yellow; */
 }
 
 #name-id * input {
@@ -248,7 +238,7 @@ form * input {
   padding: 10px 10px 10px 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 50px;
-  /* border: dotted black; */
+
   width: 250px;
   background-color: white;
 }
@@ -258,7 +248,7 @@ form * textarea {
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  /* border: dotted black; */
+
   width: 100%;
   height: 150px;
   background-color: white;
@@ -268,7 +258,7 @@ form * select {
   padding: 10px 10px 10px 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 50px;
-  /* border: dotted black; */
+
   width: 250px;
   background-color: white;
 }
@@ -276,15 +266,10 @@ form * select {
 .form {
   display: flex;
   flex-direction: column;
-  /* border: dashed red; */
+
   margin: 50px 100px 175px;
   width: 900px;
-  /* background: repeating-linear-gradient(
-#f2ebe6 ,
- #de854e 10px,
-#de854e 10px,
-#de854e 11px
-); */
+
   background-color: #f2ebe6;
   border: thick double #de854e;
 }
@@ -383,8 +368,6 @@ input {
   color: #335137;
   font-weight: 300;
   outline: none;
-  /* background-color: #f2ebe6; */
-  /* border: dotted blue; */
 }
 
 input::placeholder {
