@@ -22,6 +22,7 @@ public class User {
    private String phone;
    private String email;
 
+
    public User() { }
 
    public User(int id, String username, String password, String authorities) {
@@ -70,6 +71,46 @@ public class User {
 
    public void setAuthorities(Set<Authority> authorities) {
       this.authorities = authorities;
+   }
+
+   public String getFirstName() {
+      return firstName;
+   }
+
+   public String getPhone() {
+      return phone;
+   }
+
+   public void setPhone(String phone) {
+      this.phone = phone;
+   }
+
+   public String getEmail() {
+      return email;
+   }
+
+   public void setEmail(String email) {
+      this.email = email;
+   }
+
+   public void setFirstName(String firstName) {
+      this.firstName = firstName;
+   }
+
+   public String getLastName() {
+      return lastName;
+   }
+
+   public void setLastName(String lastName) {
+      this.lastName = lastName;
+   }
+
+   public LocalDate getDOB() {
+      return DOB;
+   }
+
+   public void setDOB(LocalDate DOB) {
+      this.DOB = DOB;
    }
 
    public void setAuthorities(String authorities) {
