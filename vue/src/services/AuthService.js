@@ -14,6 +14,10 @@ export default {
     return axios.put('/newpassword', {newPassword})
   },
 
+  getUserList(){
+    return axios.get('/userlist')
+  }
+
   // adopt() {
   //   return axios.post('/adopt', )
   // },
