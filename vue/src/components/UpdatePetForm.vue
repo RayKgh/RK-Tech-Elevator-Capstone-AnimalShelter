@@ -59,7 +59,9 @@
         </div>
 
         <div class="vaccinated">
-          <label> Are they Vaccinated? Click if {{ !pet.vaccinated }}: </label>
+          <label>
+            Is {{ pet.petName }} Vaccinated? Click if {{ !pet.vaccinated }}:
+          </label>
           <div id="vac-id">
             <input
               type="checkbox"
@@ -85,6 +87,19 @@
       </div>
 
       <div class="section-three">
+        <div class="photo-url">
+          <label>Enter a photo url:</label>
+          <div id="url-id">
+            <textarea
+              type="text"
+              name="photoUrl"
+              id="photoUrl"
+              v-model="pet.source"
+              placeholder="https://www.google.com/imgres?imgurl"
+            />
+          </div>
+        </div>
+
         <div class="pet-desc">
           <label>Enter Description of Sloth: </label>
           <div id="pet-id">
@@ -96,10 +111,64 @@
             />
           </div>
         </div>
+
+        <div class="photo-desc">
+          <label>Enter Description of Photo:</label>
+          <div id="photo-id">
+            <textarea
+              type="text"
+              name="description"
+              id="description"
+              v-model="pet.description"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="section-four">
+        <div class="entry-date">
+          <label>When {{ pet.petName }} Was Rescued</label>
+          <input
+            type="date"
+            name="entryDate"
+            id="entryDate"
+            v-model="pet.entryDate"
+            placeholder="06/12/2003"
+          />
+        </div>
+        <div class="adoption-status">
+          <label>Select {{ pet.petName }}'s Adoption Status </label>
+          <select
+            name="adoption-status"
+            id="adoption-status"
+            v-model="pet.adoptionStatus"
+          >
+            <option
+              v-for="(status, index) in pet.adoptionOptions"
+              :key="index"
+              :value="status.text"
+            >
+              {{ status.text }}
+            </option>
+          </select>
+        </div>
+
+        <div class="adoption-date">
+          <label>When {{ pet.petName }} Was Adopted</label>
+          <input
+            type="date"
+            name="adoptionDate"
+            id="adoptionDate"
+            v-model="pet.adoptionDate"
+            placeholder="06/12/2003"
+          />
+        </div>
       </div>
 
       <div class="submit-btn">
-        <button type="submit" id="submit-btn">submit updates</button>
+        <button type="submit" id="submit-btn" @click="update">
+          Submit Updates
+        </button>
       </div>
     </form>
   </div>
@@ -138,7 +207,15 @@ export default {
         dob: "",
         adoptionDate: "",
         adoptionStatus: "",
+        adoptionOptions: [
+          {
+            text: "Available",
+          },
+          { text: "Adopted" },
+        ],
         entryDate: "",
+        source: "",
+        description: "",
       },
     };
   },
@@ -168,13 +245,15 @@ export default {
       this.pet.sex = this.pets[0].sex;
       this.pet.petDescription = this.pets[0].petDescription;
       this.pet.vaccinated = this.pets[0].vaccinated;
+      this.pet.description = this.pets[0].description;
+      this.pet.source = this.pets[0].source;
     },
   },
   methodToForceUpdate() {
     this.$forceUpdate();
   },
   update() {
-    const newPet = {
+    const updatedPet = {
       petName: this.pet.petName,
       color: this.pet.color,
       breed: this.pet.breed,
@@ -184,9 +263,13 @@ export default {
       dob: this.pet.dob,
       source: this.pet.source,
       photoDescription: this.pet.photoDescription,
+      entryDate: this.pet.entryDate,
+      adoptionDate: this.pet.adoptionDate,
+      adoptionStatus: this.pet.adoptionStatus,
+      petID: this.$router.params.petID,
     };
 
-    PetService.updatePet(newPet, this.$route.params.petID)
+    PetService.updatePet(updatedPet)
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
           this.$router.push("/updatepets");
@@ -227,13 +310,10 @@ export default {
 }
 
 .section-one {
-  /* width: 2000px;
-  height: 200px; */
   margin: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* border: dashed blue; */
 }
 
 .section-two {
@@ -241,16 +321,14 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* justify-items: center; */
-  /* border: dotted black; */
 }
 
-.section-three {
+.section-three,
+.section-four {
   margin: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* border: double yellow; */
 }
 
 #name-id * input {
@@ -270,7 +348,7 @@ form * input {
   padding: 10px 10px 10px 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 50px;
-  /* border: dotted black; */
+
   width: 250px;
   background-color: white;
 }
@@ -280,9 +358,10 @@ form * textarea {
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  /* border: dotted black; */
-  width: 600px;
+
+  width: 100%;
   height: 150px;
+  background-color: #f2ebe6;
   background-color: white;
 }
 
@@ -290,15 +369,16 @@ form * select {
   padding: 10px 10px 10px 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 50px;
-  /* border: dotted black; */
+
   width: 250px;
+  background-color: #f2ebe6;
   background-color: white;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  /* border: dashed red; */
+
   margin: 50px 100px 175px;
   width: 900px;
   /* background: repeating-linear-gradient(
@@ -307,6 +387,9 @@ form * select {
 #de854e 10px,
 #de854e 11px
 ); */
+  /* background-color:  #de854e;
+border: thick double white */
+
   background-color: #f2ebe6;
   border: thick double #de854e;
 }
@@ -347,10 +430,15 @@ form * select {
   margin: 20px;
 }
 
-.pet-desc {
+.pet-desc,
+.adoption-status {
   display: flex;
   flex-direction: column;
   margin: 20px;
+}
+
+.adoption-status {
+  margin-top: 0;
 }
 
 .photo-desc {
@@ -405,8 +493,6 @@ input {
   color: #335137;
   font-weight: 300;
   outline: none;
-  /* background-color: #f2ebe6; */
-  /* border: dotted blue; */
 }
 
 input::placeholder {

@@ -18,8 +18,8 @@ export default {
         return http.get(`/pets/${petID}`)
     },
 
-    updatePet(pet, petID) {
-        return http.put(`pets/${petID}/update`, pet)
+    updatePet(pet) {
+        return http.put(`pets/${pet.petID}/`, pet)
     }
 
 }
