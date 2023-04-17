@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <h2>Update {{ this.pet.petName }}'s details</h2>
-    <form @submit.prevent="submit()" class="form">
+    <form @submit.prevent="submit" class="form">
       <div class="section-one">
         <div class="breed">
           <label for="breed">Choose a Breed:</label>
@@ -166,9 +166,7 @@
       </div>
 
       <div class="submit-btn">
-        <button type="submit" id="submit-btn" @click="update">
-          Submit Updates
-        </button>
+        <button type="submit" id="submit-btn">Submit Updates</button>
       </div>
     </form>
   </div>
@@ -248,51 +246,53 @@ export default {
       this.pet.description = this.pets[0].description;
       this.pet.source = this.pets[0].source;
     },
-  },
-  methodToForceUpdate() {
-    this.$forceUpdate();
-  },
-  update() {
-    const updatedPet = {
-      petName: this.pet.petName,
-      color: this.pet.color,
-      breed: this.pet.breed,
-      sex: this.pet.sex,
-      vaccinated: this.pet.vaccinated,
-      petDescription: this.pet.petDescription,
-      dob: this.pet.dob,
-      source: this.pet.source,
-      photoDescription: this.pet.photoDescription,
-      entryDate: this.pet.entryDate,
-      adoptionDate: this.pet.adoptionDate,
-      adoptionStatus: this.pet.adoptionStatus,
-      petID: this.$router.params.petID,
-    };
+    methodToForceUpdate() {
+      this.$forceUpdate();
+    },
+    submit() {
+      const updatedPet = {
+        petName: this.pet.petName,
+        color: this.pet.color,
+        breed: this.pet.breed,
+        sex: this.pet.sex,
+        vaccinated: this.pet.vaccinated,
+        petDescription: this.pet.petDescription,
+        dob: this.pet.dob == "" ? null : this.pet.dob,
+        source: this.pet.source,
+        photoDescription: this.pet.photoDescription,
+        entryDate: this.pet.entryDate == "" ? null : this.pet.entryDate,
+        adoptionDate:
+          this.pet.adoptionDate == "" ? null : this.pet.adoptionDate,
+        adoptionStatus: this.pet.adoptionStatus,
+        petID: this.pets[0].petID,
+        //ternary operators check for empty string because jave LocalDate.parse() doesn't like that.
+      };
 
-    PetService.updatePet(updatedPet)
-      .then((response) => {
-        if (response.status === 200 || response.status === 201) {
-          this.$router.push("/updatepets");
-          this.methodToForceUpdate();
-        }
-      })
-      .catch((error) => {
-        this.handleErrorResponse(error, "adding");
-      });
-  },
-  handleErrorResponse(error, verb) {
-    if (error.response) {
-      this.errorMsg =
-        "Error " +
-        verb +
-        " pet. Response received was '" +
-        error.response.statusText +
-        "'.";
-    } else if (error.request) {
-      this.errorMsg = "Error " + verb + " pet. Server could not be reached.";
-    } else {
-      this.errorMsg = "Error " + verb + " pet. Request could not be created.";
-    }
+      PetService.updatePet(updatedPet)
+        .then((response) => {
+          if (response.status === 200 || response.status === 201) {
+            this.$router.push("/updatepets");
+            this.methodToForceUpdate();
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "adding");
+        });
+    },
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " pet. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg = "Error " + verb + " pet. Server could not be reached.";
+      } else {
+        this.errorMsg = "Error " + verb + " pet. Request could not be created.";
+      }
+    },
   },
 };
 </script>
