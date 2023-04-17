@@ -42,7 +42,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .new-pet {
   display: flex;
   justify-content: space-between;

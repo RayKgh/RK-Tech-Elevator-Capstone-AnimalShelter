@@ -1,26 +1,26 @@
 <template>
   <div>
     <table>
-    <thead>
-      <th>Name</th>
-      <th>Date Added</th>
-      <th>Status</th>
-      <th>Update</th>
-    </thead>
-    <tbody>
-      <tr v-for="pet in pets" v-bind:key="pet.petID">
-        <td>{{ pet.petName }}</td>
-        <td v-if="pet.entryDate">{{ pet.entryDate }}</td>
-        <td v-else>No Entry Date Listed</td>
-        <td>{{ pet.adoptionStatus }}</td>
-        <td>
-          <router-link
-            :to="{ name: 'update-pet', params: { petID: pet.petID } }"
-            ><i class="fa-solid fa-pen-to-square"></i
-          ></router-link>
-        </td>
-      </tr>
-    </tbody>
+      <thead>
+        <th>Name</th>
+        <th>Date Added</th>
+        <th>Status</th>
+        <th>Update</th>
+      </thead>
+      <tbody>
+        <tr v-for="pet in pets" v-bind:key="pet.petID">
+          <td>{{ pet.petName }}</td>
+          <td v-if="pet.entryDate">{{ pet.entryDate }}</td>
+          <td v-else>No Entry Date Listed</td>
+          <td>{{ pet.adoptionStatus }}</td>
+          <td>
+            <router-link
+              :to="{ name: 'update-pet', params: { petID: pet.petID } }"
+              ><i class="fa-solid fa-pen-to-square"></i
+            ></router-link>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -35,8 +35,8 @@ export default {
   },
 };
 </script>
-    
-<style>
+
+<style scoped>
 h1 {
   font-size: 50px;
   text-align: center;
@@ -53,7 +53,6 @@ table {
 }
 
 th {
-
   color: #f2ebe6;
   padding: 20px 30px 15px 30px;
   font-size: 15px;
@@ -93,11 +92,10 @@ td.left {
 
 td.has-icon {
   text-align: center;
-  
 }
 
 td i.fa-solid {
- padding-left: 20px;
+  padding-left: 20px;
   color: #3d7b51;
   font-size: 25px;
 }
