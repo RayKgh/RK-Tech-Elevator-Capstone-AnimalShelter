@@ -15,7 +15,6 @@
         <td>
           <router-link
             :to="{ name: 'update-pet', params: { petID: pet.petID } }"
-            v-bind:petID="pet.petID"
             ><i class="fa-solid fa-pen-to-square"></i
           ></router-link>
         </td>

@@ -46,5 +46,6 @@ export default new Vuex.Store({
     SET_PHOTOS(state, photos) {
       state.photos = photos;
     },
+
   }
 })

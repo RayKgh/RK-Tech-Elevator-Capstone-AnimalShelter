@@ -16,6 +16,10 @@ export default {
 
     getPetByID(petID) {
         return http.get(`/pets/${petID}`)
+    },
+
+    updatePet(pet, petID) {
+        return http.put(`pets/${petID}/update`, pet)
     }
 
 }
