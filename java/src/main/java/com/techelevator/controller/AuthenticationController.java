@@ -64,9 +64,13 @@ public class AuthenticationController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PutMapping("/newpassword")
-    public void updatePassword(@Valid @RequestBody String newPassword, Principal p) {
+    public void updatePassword(@Valid @RequestBody UpdatePassword updatePassword, Principal p) {
         String currentUsername = p.getName();
-        userDao.newUserChangePassword(currentUsername, newPassword);
+        userDao.newUserChangePassword(currentUsername, updatePassword.newPassword);
+    }
+
+    static class UpdatePassword {
+        public String newPassword;
     }
 }
 

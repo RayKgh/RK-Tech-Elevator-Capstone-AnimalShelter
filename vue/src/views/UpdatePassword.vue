@@ -1,7 +1,7 @@
 <template>
   <div id="update-psw">
-    <h1>Welcome to the Team!</h1>
     <form @submit.prevent="submit">
+      <h1>Welcome to the Team!</h1>
       <h2>Please change your password.</h2>
 
       <div id="password-box">
@@ -13,7 +13,7 @@
           name="psw"
           required
         />
-        <label for="confirm-psw">Confirm New Password</label>
+        <label for="confirm-psw">Confirm Password</label>
         <input
           v-model="confirmPassword"
           type="password"
@@ -76,11 +76,6 @@ export default {
   padding: 0%;
   margin: 0%;
   box-sizing: border-box;
-  /* background-color: green; */
-  /* display: flex; */
-  /* padding-left: 5%; */
-  justify-content: space-between;
-  align-items: center;
   height: 80vh;
 }
 
@@ -90,7 +85,10 @@ h1 {
 
 h2 {
   color: #59351f;
-  margin-top: 100px;
+  margin-top: 0px;
+  margin-left: 10px;
+  font-size: 25px;
+  margin-bottom: 20px;
 }
 
 form {
@@ -104,18 +102,19 @@ form {
   align-items: flex-start;
 }
 
-.password-box {
+#password-box {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
   color: #426b53;
   font-weight: 800;
-  font-size: 25px;
+  font-size: 20px;
   text-transform: uppercase;
+  width: 500px;
 }
 
 label {
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 .update-psw-btn {
@@ -124,8 +123,8 @@ label {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #de854e;
   color: #f2ebe6;
-  padding: 10px 70px;
-  margin-top: 20px;
+  padding: 10px 50px;
+  margin-top: -10px;
   font-weight: 800;
   font-size: 30px;
   text-transform: uppercase;
@@ -136,9 +135,9 @@ input {
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #f2ebe6;
-  padding: 12.5px 100px 12.5px 50px;
-  margin: 5px 0 60px 0;
-  width: 100%;
+  padding: 10px;
+  margin: 5px 0px 50px 0px;
+  width: 80%;
   font-size: 25px;
   color: #59351f;
   font-weight: 600;

@@ -11,7 +11,7 @@ export default {
   },
 
   updatePassword(newPassword) {
-    return axios.put('/newpassword', newPassword)
+    return axios.put('/newpassword', {newPassword})
   },
 
   // adopt() {
