@@ -19,7 +19,7 @@ export default {
     },
 
     updatePet(pet) {
-        return http.put(`pets/${pet.petID}/`, pet)
+        return http.put(`pets/${pet.petID}/update`, pet)
     }
 
 }
