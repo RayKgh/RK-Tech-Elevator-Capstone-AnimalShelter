@@ -70,7 +70,8 @@ h2 {
   border: dashed black;
   border-radius: 50px;
   border: 0;
-  box-shadow: 0 4px 4px black;
+  box-shadow: rgba(0, 0, 0, 0.2);
+
   background-color: #de854e;
   color: white;
   padding: 8px 25px;
