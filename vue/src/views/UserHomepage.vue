@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>edit pets</h1>
+    <h2>Pet List</h2>
 
     <pet-table></pet-table>
     <router-link v-bind:to="{ name: 'new-pet' }"
@@ -40,4 +40,12 @@ export default {
 </script>
 
 <style>
+h2 {
+  font-weight: 900;
+  margin: 30px 0 0 0;
+  text-align: center;
+  font-size: 60px;
+  text-transform: uppercase;
+   color: #335137
+}
 </style>

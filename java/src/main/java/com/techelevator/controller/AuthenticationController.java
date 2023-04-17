@@ -18,6 +18,8 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.security.Principal;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -60,5 +62,15 @@ public class AuthenticationController {
         }
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PutMapping("/newpassword")
+    public void updatePassword(@Valid @RequestBody UpdatePassword updatePassword, Principal p) {
+        String currentUsername = p.getName();
+        userDao.newUserChangePassword(currentUsername, updatePassword.newPassword);
+    }
+
+    static class UpdatePassword {
+        public String newPassword;
+    }
 }
 

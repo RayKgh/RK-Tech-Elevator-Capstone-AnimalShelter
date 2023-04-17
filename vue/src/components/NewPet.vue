@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h2>Add new pet details</h2>
+    <h2>Add details of a new sloth</h2>
 
     <form @submit.prevent="submit()" class="form">
       <div class="section-one">
@@ -266,7 +266,7 @@ h2 {
   font-weight: 900;
   margin: 30px 0 0 0;
   text-align: center;
-  font-size: 40px;
+  font-size: 60px;
   text-transform: uppercase;
   color: #59351f;
 }
@@ -277,18 +277,19 @@ form * input {
   border-radius: 50px;
   /* border: dotted black; */
   width: 250px;
-  background-color: #f2ebe6;
+  background-color: white;
 }
 
 form * textarea {
   padding: 10px 10px 10px 20px;
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 50px;
+  border-radius: 20px;
   /* border: dotted black; */
   width: 100%;
   height: 150px;
   background-color: #f2ebe6;
+  background-color: white;
 }
 
 form * select {
@@ -298,6 +299,7 @@ form * select {
   /* border: dotted black; */
   width: 250px;
   background-color: #f2ebe6;
+  background-color: white;
 }
 
 .form {
@@ -314,6 +316,8 @@ form * select {
 ); */
   /* background-color:  #de854e;
 border: thick double white */
+  background-color: #f2ebe6;
+  border: thick double #de854e;
 }
 
 .name {
@@ -387,12 +391,13 @@ border: thick double white */
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #de854e;
-  color: #f2ebe6;
+  color: white;
   padding: 8px 25px;
   margin-top: 20px;
   font-weight: 800;
   font-size: 20px;
   text-transform: uppercase;
+  margin: 20px;
 }
 
 label {

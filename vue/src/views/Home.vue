@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Cincy Sloths</h1>
-    <h2>Volunteer run sloth rescue for cincinnati's sleepiest residents</h2>
+    <h2>Volunteer-run sloth rescue for cincinnati's sleepiest residents</h2>
     <button class="browse-btn">
       <router-link :to="{ name: 'adopt' }" class="btn-text">
         Available Pets
