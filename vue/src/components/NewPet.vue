@@ -204,7 +204,22 @@ export default {
       this.url = this.pet.source;
     },
     newSubmit() {
-      if (this.url === "") {
+      //checks to see if all fields left blank. if so, will not create pet.
+      if (
+        this.pet.petName == "" &&
+        this.pet.color == "" &&
+        this.pet.breed == "" &&
+        this.pet.sex == "" &&
+        this.pet.vaccinated == false &&
+        this.pet.petDescription == "" &&
+        this.pet.dob == "" &&
+        this.pet.source == "" &&
+        this.pet.photoDescription == ""
+      ) {
+        alert("No Pet Created. Need to input pet details");
+      } else if (this.pet.petName == "") {
+        alert("Sloth needs at least a name");
+      } else if (this.url === "") {
         this.submit();
       } else {
         this.isImgUrl(this.url).then((response) => {
@@ -282,7 +297,6 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  
 }
 
 .section-one {
@@ -311,9 +325,9 @@ export default {
 }
 
 h2 {
- font-weight: 900;
- padding-right: 600px;
-padding-top: -50px;
+  font-weight: 900;
+  padding-right: 600px;
+  padding-top: -50px;
   text-align: center;
   font-size: 50px;
   text-transform: uppercase;

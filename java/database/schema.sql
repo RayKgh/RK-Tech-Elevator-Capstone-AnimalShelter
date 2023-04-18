@@ -54,7 +54,7 @@ CREATE TABLE pets(
 CREATE TABLE photos(
 	photo_id SERIAL PRIMARY KEY,
 	pet_id int NOT NULL,
-	source varchar(500) NOT NULL DEFAULT 'https://i.imgur.com/gYePOeR.png',
+	source varchar(500) DEFAULT 'https://i.imgur.com/gYePOeR.png',
 	description varchar(100),
 	
 	CONSTRAINT fk_photos FOREIGN KEY(pet_id) REFERENCES pets(pet_id)

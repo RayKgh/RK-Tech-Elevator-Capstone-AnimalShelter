@@ -225,17 +225,34 @@ export default {
         (pet) => pet.petID == this.$route.params.petID
       );
     },
+    photos() {
+      return this.$store.state.photos;
+    },
   },
   created() {
     //takes data from pets() in computed and puts in pet in data
     this.fillPet();
   },
   methods: {
+    photosById() {
+      return this.photos.filter((photo) => photo.petID == this.pets[0].petID);
+    },
+    getLastPhoto() {
+      let pictures = this.photosById();
+      pictures = pictures[pictures.length - 1];
+      return pictures;
+    },
     updateURL() {
       this.url = this.pet.source;
     },
     newSubmit() {
-      if (this.url === "") {
+      if (
+        this.pet.adoptionStatus == "Available" &&
+        this.pet.adoptionDate != "" &&
+        this.pet.adoptionDate != null
+      ) {
+        alert("Cannot have an adoption date for a sloth that is available");
+      } else if (this.url === "") {
         this.submit();
       } else {
         this.isImgUrl(this.url).then((response) => {
@@ -263,13 +280,14 @@ export default {
       this.pet.breed = this.pets[0].breed;
       this.pet.color = this.pets[0].color;
       this.pet.dob = this.pets[0].dob;
+      this.pet.entryDate = this.pets[0].entryDate;
       this.pet.adoptionDate = this.pets[0].adoptionDate;
       this.pet.adoptionStatus = this.pets[0].adoptionStatus;
       this.pet.sex = this.pets[0].sex;
       this.pet.petDescription = this.pets[0].petDescription;
       this.pet.vaccinated = this.pets[0].vaccinated;
-      this.pet.description = this.pets[0].description;
-      this.pet.source = this.pets[0].source;
+      this.pet.description = this.getLastPhoto().description;
+      this.pet.source = this.getLastPhoto().source;
       this.pet.url = this.pet.source;
     },
     methodToForceUpdate() {
@@ -285,7 +303,7 @@ export default {
         petDescription: this.pet.petDescription,
         dob: this.pet.dob == "" ? null : this.pet.dob,
         source:
-          this.pet.source == ""
+          this.pet.source == "" || this.pet.source == null
             ? "https://i.imgur.com/gYePOeR.png"
             : this.pet.source,
         photoDescription: this.pet.photoDescription,
