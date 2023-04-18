@@ -12,7 +12,11 @@
       >
         Update Pets
       </router-link>
-      <router-link v-bind:to="{ name: 'applicants' }" class="dark-item">
+      <router-link
+        v-bind:to="{ name: 'applicants' }"
+        class="dark-item"
+        v-if="toggleAdmin"
+      >
         Pending Applications
       </router-link>
     </div>
@@ -65,12 +69,19 @@
 export default {
   name: "nav-bar",
   data() {
-    return {
-      isAdmin: false,
-    };
+    return {};
   },
 
-  methods: {},
+  computed: {
+    toggleAdmin() {
+      const isAdmin =
+        this.$store.state.token !== "" &&
+        this.$store.state.user.authorities[0].name === "ROLE_ADMIN"
+          ? true
+          : false;
+      return isAdmin;
+    },
+  },
 };
 </script>
 
