@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Cincy Sloths</h1>
-    <h2>Volunteer-run sloth rescue for cincinnati's sleepiest residents</h2>
+    <h2>Volunteer-run sloth rescue for Cincinnati's sleepiest residents</h2>
     <button class="browse-btn">
       <router-link :to="{ name: 'adopt' }" class="btn-text">
         Available Pets
@@ -19,7 +19,6 @@ export default {
 <style scoped>
 .home {
   margin: 150px 30px 0 100px;
-  /* background-color: tomato; */
   width: 60%;
 }
 
@@ -28,11 +27,10 @@ h1 {
 }
 
 h2 {
-  margin: -20px 20px 0;
-  font-size: 50px;
-  text-transform: uppercase;
-  /* background-color: aliceblue; */
-  width: 700px;
+  margin: -20px 0 0 50px;
+  font-size: 40px;
+  font-weight: 600;
+  width: 650px;
   color: #59351f;
 }
 
@@ -41,8 +39,8 @@ h2 {
   border: transparent;
   background-color: #de854e;
   text-transform: uppercase;
-  padding: 15px 50px;
-  margin: 20px 20px 0;
+  padding: 15px 30px;
+  margin: 10px 50px 0;
 }
 
 .btn-text {

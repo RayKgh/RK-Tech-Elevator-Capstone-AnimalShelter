@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h2>Add details of a new sloth</h2>
+    <h2>New Pet</h2>
 
     <form @submit.prevent="newSubmit()" class="form">
       <div class="section-one">
@@ -282,6 +282,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 .section-one {
@@ -310,12 +311,13 @@ export default {
 }
 
 h2 {
-  font-weight: 900;
-  margin: 30px 0 0 0;
+ font-weight: 900;
+ padding-right: 600px;
+padding-top: -50px;
   text-align: center;
-  font-size: 60px;
+  font-size: 50px;
   text-transform: uppercase;
-  color: #59351f;
+  color: #335137;
 }
 
 form * input {
@@ -352,18 +354,8 @@ form * select {
 .form {
   display: flex;
   flex-direction: column;
-
-  margin: 50px 100px 175px;
+  /* margin: 50px 100px 175px; */
   width: 900px;
-  /* background: repeating-linear-gradient(
-#f2ebe6 ,
- #de854e 10px,
-#de854e 10px,
-#de854e 11px
-); */
-  /* background-color:  #de854e;
-border: thick double white */
-
   background-color: #f2ebe6;
   border: thick double #de854e;
 }

@@ -64,6 +64,11 @@
 <script>
 export default {
   name: "nav-bar",
+  data() {
+    return {
+      isAdmin: false,
+    };
+  },
 
   methods: {},
 };
@@ -76,7 +81,6 @@ export default {
   justify-content: space-between;
   height: 100px;
   padding-left: 20px;
-  /* background-color: lightcoral; */
 }
 
 .image {
@@ -88,7 +92,8 @@ export default {
   width: 40%;
   flex-direction: row-reverse;
   font-size: 25px;
-  padding: 5px 0;
+  height: 100%;
+  align-items: center;
 }
 
 .nav-items {
@@ -98,7 +103,7 @@ export default {
   align-items: center;
   font-size: 25px;
   margin-right: 50px;
-  /* background-color: blueviolet; */
+  height: 100%;
 }
 
 .nav-item {
@@ -114,7 +119,7 @@ export default {
   font-weight: 800;
   text-decoration: none;
   color: #335137;
-  padding: 0 0 8px;
+  margin-left: 50px;
 }
 
 .volunteerList {
