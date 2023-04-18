@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <h2>Update {{ this.pet.petName }}'s details</h2>
-    <form @submit.prevent="submit" class="form">
+    <form @submit.prevent="newSubmit" class="form">
       <div class="section-one">
         <div class="breed">
           <label for="breed">Choose a Breed:</label>
@@ -95,7 +95,7 @@
               name="photoUrl"
               id="photoUrl"
               v-model="pet.source"
-              placeholder="https://www.google.com/imgres?imgurl"
+              @change="updateURL()"
             />
           </div>
         </div>
@@ -178,6 +178,7 @@ export default {
   name: "update-pet-form",
   data() {
     return {
+      url: "",
       pet: {
         //create a pet object to use with two way data binding. use pets array from computed
         petName: "",
@@ -230,6 +231,30 @@ export default {
     this.fillPet();
   },
   methods: {
+    updateURL() {
+      this.url = this.pet.source;
+    },
+    newSubmit() {
+      if (this.url === "") {
+        this.submit();
+      } else {
+        this.isImgUrl(this.url).then((response) => {
+          if (response === true) {
+            this.submit();
+          } else {
+            alert("The photo source is not valid");
+          }
+        });
+      }
+    },
+    isImgUrl(url) {
+      const img = new Image();
+      img.src = url;
+      return new Promise((resolve) => {
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+      });
+    },
     changeVaccinatedStatus() {
       this.pet.vaccinated = !this.pet.vaccinated;
     },
@@ -245,6 +270,7 @@ export default {
       this.pet.vaccinated = this.pets[0].vaccinated;
       this.pet.description = this.pets[0].description;
       this.pet.source = this.pets[0].source;
+      this.pet.url = this.pet.source;
     },
     methodToForceUpdate() {
       this.$forceUpdate();
@@ -258,7 +284,10 @@ export default {
         vaccinated: this.pet.vaccinated,
         petDescription: this.pet.petDescription,
         dob: this.pet.dob == "" ? null : this.pet.dob,
-        source: this.pet.source,
+        source:
+          this.pet.source == ""
+            ? "https://i.imgur.com/gYePOeR.png"
+            : this.pet.source,
         photoDescription: this.pet.photoDescription,
         entryDate: this.pet.entryDate == "" ? null : this.pet.entryDate,
         adoptionDate:

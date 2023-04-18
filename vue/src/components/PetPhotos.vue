@@ -1,9 +1,9 @@
 <template>
   <div class="fill">
     <img
-      :src="getFirstPhoto().source"
+      :src="getLastPhoto().source"
       class="image"
-      :alt="getFirstPhoto().description"
+      :alt="getLastPhoto().description"
     />
   </div>
 </template>
@@ -31,6 +31,11 @@ export default {
     getFirstPhoto() {
       let pictures = this.photosById();
       pictures = pictures[0];
+      return pictures;
+    },
+    getLastPhoto() {
+      let pictures = this.photosById();
+      pictures = pictures[pictures.length - 1];
       return pictures;
     },
   },

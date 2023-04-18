@@ -2,18 +2,19 @@
   <div class="page">
     <h2>Add details of a new sloth</h2>
 
-    <form @submit.prevent="submit()" class="form">
+    <form @submit.prevent="newSubmit()" class="form">
       <div class="section-one">
         <div class="breed">
           <label for="breed">Choose a Breed:</label>
 
-          <select name="breed" id="breed">
-            <option value="pygmy">Pygmy three-toed sloth</option>
-            <option value="maned">Maned sloth</option>
-            <option value="pale-throated">Pale-throated sloth</option>
-            <option value="brown-throated">Brown-throated sloth</option>
-            <option value="linnaeus">Linnaeus’s two-toed sloth</option>
-            <option value="hoffman">Hoffman’s two-toed sloth</option>
+          <select name="breed" id="breed" v-model="pet.breed">
+            <option
+              v-for="(breed, index) in pet.breedOptions"
+              :key="index"
+              :value="breed.text"
+            >
+              {{ breed.text }} sloth
+            </option>
           </select>
           <!-- <label>Breed</label>
     <div id="breed-id">
@@ -29,9 +30,14 @@
         <div class="sex">
           <label for="sex">Choose the Sex:</label>
 
-          <select name="sex" id="sex">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+          <select name="sex" id="sex" v-model="pet.sex">
+            <option
+              v-for="(sex, index) in pet.sexOptions"
+              :key="index"
+              :value="sex.text"
+            >
+              {{ sex.text }}
+            </option>
           </select>
           <!-- <label>Sex</label>
          <div id="sex-id">
@@ -47,12 +53,14 @@
 
         <div class="color">
           <label for="color">Choose the color:</label>
-          <select name="color" id="color">
-            <option value="brown">Brown</option>
-            <option value="grey">Grey</option>
-            <option value="black">Black</option>
-            <option value="white">White</option>
-            <option value="green">Green</option>
+          <select name="color" id="color" v-model="pet.color">
+            <option
+              v-for="(color, index) in pet.colorOptions"
+              :key="index"
+              :value="color.text"
+            >
+              {{ color.text }}
+            </option>
           </select>
 
           <!-- <label>Color</label>
@@ -117,6 +125,7 @@
               name="photoUrl"
               id="photoUrl"
               v-model="pet.source"
+              @change="updateURL()"
               placeholder="https://www.google.com/imgres?imgurl"
             />
           </div>
@@ -160,11 +169,28 @@ export default {
   name: "new-pet",
   data() {
     return {
+      url: "",
       pet: {
         petName: "",
         color: "",
+        colorOptions: [
+          { text: "Brown" },
+          { text: "Black" },
+          { text: "Grey" },
+          { text: "White" },
+          { text: "Green" },
+        ],
         breed: "",
+        breedOptions: [
+          { text: "Hoffman two-toed" },
+          { text: "Maned" },
+          { text: "Pale-throated" },
+          { text: "Brown-throated" },
+          { text: "Linnaeus two-toad" },
+          { text: "Pygmy three-toed" },
+        ],
         sex: "",
+        sexOptions: [{ text: "Male" }, { text: "Female" }],
         vaccinated: false,
         petDescription: "",
         dob: "",
@@ -174,6 +200,30 @@ export default {
     };
   },
   methods: {
+    updateURL() {
+      this.url = this.pet.source;
+    },
+    newSubmit() {
+      if (this.url === "") {
+        this.submit();
+      } else {
+        this.isImgUrl(this.url).then((response) => {
+          if (response === true) {
+            this.submit();
+          } else {
+            alert("The photo source is not valid");
+          }
+        });
+      }
+    },
+    isImgUrl(url) {
+      const img = new Image();
+      img.src = url;
+      return new Promise((resolve) => {
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+      });
+    },
     changeVaccinatedStatus() {
       this.pet.vaccinated = !this.pet.vaccinated;
     },
@@ -189,8 +239,11 @@ export default {
         sex: this.pet.sex,
         vaccinated: this.pet.vaccinated,
         petDescription: this.pet.petDescription,
-        dob: this.pet.dob,
-        source: this.pet.source,
+        dob: this.pet.dob == "" ? null : this.pet.dob,
+        source:
+          this.pet.source == ""
+            ? "https://i.imgur.com/gYePOeR.png"
+            : this.pet.source,
         photoDescription: this.pet.photoDescription,
       };
 

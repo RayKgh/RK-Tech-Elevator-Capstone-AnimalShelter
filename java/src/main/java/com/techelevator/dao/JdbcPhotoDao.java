@@ -47,7 +47,6 @@ public class JdbcPhotoDao implements PhotoDao {
        } else{
            return null;
        }
-
     }
 
     public Photo mapRowToPhoto(SqlRowSet results){

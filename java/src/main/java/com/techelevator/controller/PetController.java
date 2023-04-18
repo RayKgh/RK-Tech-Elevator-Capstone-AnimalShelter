@@ -76,7 +76,6 @@ public class PetController {
                 photo.setPetID(newPetID);
 
                 photoDao.addNewPhoto(photo);
-
             }
         } else {
             throw new IllegalAccessException("Must be logged in to add a pet");
@@ -92,6 +91,12 @@ public class PetController {
         if (user.getAuthorities().contains(new Authority("ROLE_USER")) || user.getAuthorities().contains(new Authority("ROLE_ADMIN"))) {
             if (pet != null) {
                 Integer updatedPetID = petDao.updatePet(pet, id);
+                Photo photo = new Photo();
+                photo.setSource(pet.getSource());
+                photo.setDescription(pet.getPhotoDescription());
+                photo.setPetID(updatedPetID);
+
+                photoDao.addNewPhoto(photo);
             }
         }
     }

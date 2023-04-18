@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Pet;
+import com.techelevator.model.Photo;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.parameters.P;
@@ -49,7 +50,7 @@ public class JdbcPetDao implements PetDao{
         }
 
         String sql = "INSERT INTO pets(pet_name, DOB, breed, color, sex, adoption_status, is_vaccinated, entry_date, pet_description) VALUES(?,?,?,?,?,?,?,?,?) RETURNING pet_id;";
-        Integer newPetID = jdbcTemplate.queryForObject(sql,Integer.class,pet.getPetName(), LocalDate.parse(pet.getDOB()),pet.getBreed(),pet.getColor(),pet.getSex(),"Available",pet.isVaccinated(),LocalDate.now(),pet.getPetDescription());
+        Integer newPetID = jdbcTemplate.queryForObject(sql,Integer.class,pet.getPetName(), (pet.getDOB()!=null) ? LocalDate.parse(pet.getDOB()) : null, pet.getBreed(),pet.getColor(),pet.getSex(),"Available",pet.isVaccinated(),LocalDate.now(),pet.getPetDescription());
         if(newPetID!=null){
             return newPetID;
         } else {
@@ -67,7 +68,12 @@ public class JdbcPetDao implements PetDao{
                 "\tWHERE pet_id=? RETURNING pet_id;";
 
         Integer updatedPetID = jdbcTemplate.queryForObject(sql,Integer.class,pet.getPetName(),(pet.getDOB()!=null) ? LocalDate.parse(pet.getDOB()) : null,pet.getBreed(),pet.getColor(),pet.getSex(),pet.getAdoptionStatus(),pet.isVaccinated(),(pet.getEntryDate()!=null) ? LocalDate.parse(pet.getEntryDate()) : null,(pet.getAdoptionDate()!=null) ? LocalDate.parse(pet.getAdoptionDate()) : null,pet.getPetDescription(),id);
+        Photo photo = new Photo();
+        photo.setPetID(updatedPetID);
+        photo.setDescription(pet.getPhotoDescription());
+        photo.setSource(pet.getSource());
         if(updatedPetID!=null){
+
             return updatedPetID;
         } else {
             return null;
