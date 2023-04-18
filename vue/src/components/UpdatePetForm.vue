@@ -252,6 +252,8 @@ export default {
         this.pet.adoptionDate != null
       ) {
         alert("Cannot have an adoption date for a sloth that is available");
+      } else if (this.pet.petName == "" || this.pet.petName == null) {
+        alert("Sloth needs at least a name");
       } else if (this.url === "") {
         this.submit();
       } else {
