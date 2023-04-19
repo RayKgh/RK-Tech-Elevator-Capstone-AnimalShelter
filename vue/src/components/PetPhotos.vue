@@ -1,6 +1,7 @@
 <template>
   <div class="fill">
     <img
+      v-if="!!getLastPhoto()"
       :src="getLastPhoto().source"
       class="image"
       :alt="getLastPhoto().description"

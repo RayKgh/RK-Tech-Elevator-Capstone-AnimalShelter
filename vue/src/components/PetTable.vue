@@ -35,7 +35,6 @@ export default {
   },
 };
 </script>
-    
 
 <style scoped>
 h1 {
@@ -51,8 +50,6 @@ table {
   /* border-radius: 30px; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   width: 1200px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
 }
 
 th {
@@ -61,7 +58,7 @@ th {
   font-size: 15px;
   text-transform: uppercase;
   text-align: left;
-  border-radius: 30px;
+  /* border-radius: 30px; */
 }
 
 tr {

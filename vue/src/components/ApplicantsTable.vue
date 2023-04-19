@@ -1,32 +1,45 @@
 <template>
   <div class="applicants-table">
     <h1>Pending Volunteers</h1>
-    <table>
-      <thead>
-        <th>Date Added</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>phone</th>
-        <th>email</th>
-        <th>Accept</th>
-        <th>Decline</th>
-      </thead>
-      <tbody>
-        <tr v-for="applicant in applicants" v-bind:key="applicant.applicantId">
-          <td class="left date">{{ applicant.date }}</td>
-          <td class="left fname">{{ applicant.firstName }}</td>
-          <td class="left lname">{{ applicant.lastName }}</td>
-          <td class="left phone">{{ applicant.phoneNum }}</td>
-          <td class="left email">{{ applicant.email }}</td>
-          <td class="has-icon" @click="approveApplicant(applicant, 'approved')">
-            <i class="fa-solid fa-square-check"></i>
-          </td>
-          <td class="has-icon" @click="approveApplicant(applicant, 'declined')">
-            <i class="fa-solid fa-square-xmark"></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="border"></div>
+    <div class="table">
+      <table>
+        <thead>
+          <th>Date Added</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>phone</th>
+          <th>email</th>
+          <th>Accept</th>
+          <th>Decline</th>
+        </thead>
+        <tbody>
+          <tr
+            v-for="applicant in applicants"
+            v-bind:key="applicant.applicantId"
+          >
+            <td class="left date">{{ applicant.date }}</td>
+            <td class="left fname">{{ applicant.firstName }}</td>
+            <td class="left lname">{{ applicant.lastName }}</td>
+            <td class="left phone">{{ applicant.phoneNum }}</td>
+            <td class="left email">{{ applicant.email }}</td>
+            <td
+              class="has-icon"
+              @click="approveApplicant(applicant, 'approved')"
+            >
+              <i class="fa-solid fa-square-check"></i>
+            </td>
+            <td
+              class="has-icon"
+              @click="approveApplicant(applicant, 'declined')"
+            >
+              <i class="fa-solid fa-square-xmark"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div role="alert" v-if="submitError" class="submit-error">
       There was an error processing your request. Please try again later.
     </div>
@@ -83,12 +96,19 @@ h1 {
   margin-right: 20vw;
 }
 
+.border {
+  background-color: red;
+  z-index: 1;
+  width: 100px;
+}
+
 table {
   margin: 0 auto;
   background-color: #335137;
   border-collapse: collapse;
-  border-radius: 30px;
+  /* border-radius: 30px; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  z-index: 0;
 }
 
 th {
@@ -97,11 +117,12 @@ th {
   font-size: 15px;
   text-transform: uppercase;
   text-align: left;
-  border-radius: 30px;
+  /* border-radius: 30px; */
 }
 
 tr {
   color: #335137;
+  border-radius: 30px;
 }
 
 tr:nth-child(even) {
@@ -111,13 +132,13 @@ tr:nth-child(odd) {
   background-color: #f2ebe6;
 }
 
-tr:last-child td:first-child {
+/* tr:last-child td:first-child {
   border-bottom-left-radius: 30px;
 }
 
 tr:last-child td:last-child {
   border-bottom-right-radius: 30px;
-}
+} */
 
 td {
   border: none;
