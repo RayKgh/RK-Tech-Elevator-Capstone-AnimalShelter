@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <pet-photos v-bind:petID="pet.petID" class="image" />
+    <pet-photos v-bind:pet="pet" class="image" />
     <h2 class="name">{{ pet.petName }}</h2>
     <ul>
       <li><strong>Sex:</strong> {{ pet.sex }}</li>
@@ -21,8 +21,14 @@
 
 <script>
 import PetPhotos from "./PetPhotos.vue";
+import PetPhotoService from "../services/PetPhotoService.js";
 export default {
   components: { PetPhotos },
+  created() {
+    PetPhotoService.getAllPetPhotos().then((photos) => {
+      this.$store.commit("SET_PHOTOS", photos.data);
+    });
+  },
   name: "pet-card",
   props: ["pet"],
   computed: {
