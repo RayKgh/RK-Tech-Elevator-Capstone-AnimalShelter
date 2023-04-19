@@ -52,18 +52,28 @@ export default {
     petsLen() {
       return this.pets.length;
     },
-    middle() {
-      if (this.end == 0) {
-        return this.petsLen - 1;
-      } else {
-        return this.end - 1;
-      }
+    middle: {
+      get() {
+        if (this.end == 0) {
+          return this.petsLen - 1;
+        } else {
+          return this.end - 1;
+        }
+      },
+      set(newValue) {
+        return newValue;
+      },
     },
-    end() {
-      return (
-        (((this.start + this.offset) % this.petsLen) + this.petsLen) %
-        this.petsLen
-      );
+    end: {
+      get() {
+        return (
+          (((this.start + this.offset) % this.petsLen) + this.petsLen) %
+          this.petsLen
+        );
+      },
+      set(newValue) {
+        return newValue;
+      },
     },
   },
   created() {

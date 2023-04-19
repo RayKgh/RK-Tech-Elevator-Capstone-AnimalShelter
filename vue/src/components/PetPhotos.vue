@@ -10,32 +10,15 @@
 </template>
 
 <script>
-import PetPhotoService from "../services/PetPhotoService.js";
-
 export default {
   name: "pet-photos",
-  props: ["petID"],
-  computed: {
-    photos() {
-      return this.$store.state.photos;
-    },
-  },
-  created() {
-    PetPhotoService.getAllPetPhotos().then((photos) => {
-      this.$store.commit("SET_PHOTOS", photos.data);
-    });
-  },
+  props: ["pet"],
+  computed: {},
   methods: {
-    photosById() {
-      return this.photos.filter((photo) => photo.petID == this.petID);
-    },
-    getFirstPhoto() {
-      let pictures = this.photosById();
-      pictures = pictures[0];
-      return pictures;
-    },
     getLastPhoto() {
-      let pictures = this.photosById();
+      let pictures = this.$store.state.photos.filter(
+        (photo) => photo.petID == this.pet.petID
+      );
       pictures = pictures[pictures.length - 1];
       return pictures;
     },
