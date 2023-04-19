@@ -85,7 +85,8 @@
               name="name"
               id="name"
               v-model="pet.petName"
-              placeholder="Lightning"
+              placeholder="*Required*"
+              class="required"
             />
           </div>
         </div>
@@ -477,5 +478,11 @@ input::placeholder {
 select {
   border-radius: 50px;
   width: 70px;
+}
+
+.required::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
 }
 </style>

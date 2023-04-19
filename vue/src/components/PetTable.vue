@@ -83,6 +83,8 @@ tr:last-child td:last-child {
   border-bottom-right-radius: 30px;
 } */
 
+/* commented out to remove border radius on bottom of updatepet page's pet list */
+
 td {
   border: none;
   padding: 15px 0px;
