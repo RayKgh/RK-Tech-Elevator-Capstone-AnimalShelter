@@ -1,21 +1,27 @@
 <template>
   <div class="card">
-    <pet-photos v-bind:petID="pet.petID" class="image" />
-    <h2 class="name">{{ pet.petName }}</h2>
-    <ul>
-      <li><strong>Sex:</strong> {{ pet.sex }}</li>
-      <li><strong>Species:</strong> {{ pet.breed }}</li>
-      <li><strong>Coloration:</strong> {{ pet.color }}</li>
-      <li><strong>Age:</strong> {{ this.ageCalc }}</li>
-    </ul>
-    <div id="bio">
-      <p class="description">{{ pet.petDescription }}</p>
-    </div>
-    <!-- <router-link
+    <div class="inner">
+      <div class="front">
+        <pet-photos v-bind:petID="pet.petID" class="image" />
+        <h2 class="name">{{ pet.petName }}</h2>
+        <ul>
+          <li><strong>Sex:</strong> {{ pet.sex }}</li>
+          <li><strong>Species:</strong> {{ pet.breed }}</li>
+          <li><strong>Coloration:</strong> {{ pet.color }}</li>
+          <li><strong>Age:</strong> {{ this.ageCalc }}</li>
+        </ul>
+      </div>
+      <div class="back">
+        <div id="bio">
+          <p class="description">{{ pet.petDescription }}</p>
+        </div>
+      </div>
+      <!-- <router-link
       :to="{ name: 'adopt-pet', params: { id: pet.petID } }"
       class="button"
       >More {{ pet.petName }}</router-link
     > -->
+    </div>
   </div>
 </template>
 
@@ -25,6 +31,11 @@ export default {
   components: { PetPhotos },
   name: "pet-card",
   props: ["pet"],
+  data() {
+    return {
+      isFlipped: false,
+    };
+  },
   computed: {
     ageCalc() {
       if (this.pet.dob != null) {
@@ -58,16 +69,52 @@ export default {
 }
 
 .card {
-  display: flex;
   width: 40vh;
   height: 70vh;
-  border-radius: 30px;
+  perspective: 1000px;
+  margin: 10px;
+}
+
+.inner {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
-  background-color: #f2ebe6;
+  position: relative;
   box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  height: 100%;
+  width: 100%;
+  transition: 1s;
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  background-color: #f2ebe6;
+  border-radius: 30px;
+  position: absolute;
   overflow: hidden;
+  height: 100%;
+  width: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  backface-visibility: hidden;
+}
+
+.back {
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  transform: rotateY(180deg);
+}
+
+.card:hover .inner {
+  transform: rotateY(180deg);
+}
+
+.name {
+  margin-left: 25px;
 }
 
 .button {
