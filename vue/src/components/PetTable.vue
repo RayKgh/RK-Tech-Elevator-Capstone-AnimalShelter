@@ -35,7 +35,6 @@ export default {
   },
 };
 </script>
-    
 
 <style scoped>
 h1 {
@@ -48,7 +47,7 @@ table {
   margin: 0 auto;
   background-color: #335137;
   border-collapse: collapse;
-  border-radius: 30px;
+  /* border-radius: 30px; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   width: 1200px;
 }
@@ -59,7 +58,7 @@ th {
   font-size: 15px;
   text-transform: uppercase;
   text-align: left;
-  border-radius: 30px;
+  /* border-radius: 30px; */
 }
 
 tr {
@@ -73,13 +72,15 @@ tr:nth-child(odd) {
   background-color: #f2ebe6;
 }
 
-tr:last-child td:first-child {
+/* tr:last-child td:first-child {
   border-bottom-left-radius: 30px;
 }
 
 tr:last-child td:last-child {
   border-bottom-right-radius: 30px;
-}
+} */
+
+/* commented out to remove border radius on bottom of updatepet page's pet list */
 
 td {
   border: none;

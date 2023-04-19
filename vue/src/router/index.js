@@ -11,7 +11,6 @@ import Directory from '../views/Directory.vue'
 import Volunteer from '../views/Volunteer.vue'
 import AddUpdatePet from '../views/AddUpdatePet.vue'
 import UpdatePet from '../views/UpdatePet.vue'
-// import PetDetails from '../views/PetDetails.vue'
 import Applicants from '../views/Applicants.vue'
 import UpdatePassword from '../views/UpdatePassword.vue'
 
@@ -96,15 +95,6 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    // {
-    //   path: '/adopt/:id',
-    //   name: 'adopt-pet',
-    //   component: PetDetails,
-    //   props: { PetDetails: true },
-    //   meta: {
-    //     requiresAuth: false
-    //   }
-    // },
     {
       path: '/updatepets/new',
       name: 'new-pet',
