@@ -1,8 +1,6 @@
-import axios from 'axios';
+import http from 'axios';
 
-const http = axios.create({
-    baseURL: "http://localhost:9000"
-});
+
 
 export default {
     getApplicants() {
