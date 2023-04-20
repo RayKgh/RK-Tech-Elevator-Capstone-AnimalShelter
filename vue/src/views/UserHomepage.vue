@@ -46,7 +46,8 @@ export default {
 .new-pet {
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
+  margin: 50px 0 10px;
   width: 1200px;
 }
 
@@ -59,8 +60,8 @@ export default {
 
 h2 {
   font-weight: 900;
- margin-left: 20px;
-  text-align: center; 
+  margin-left: 20px;
+  text-align: center;
   font-size: 60px;
   text-transform: uppercase;
   color: #335137;
@@ -74,15 +75,14 @@ h2 {
 
   background-color: #de854e;
   color: white;
-  padding: 8px 25px;
-  margin-top: 20px;
+  padding: 8px 20px;
+  margin: 10px 50px 0;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 15px;
   text-transform: uppercase;
-  margin: 20px;
 }
 
 #plus {
-  margin: 5px;
+  margin-right: 10px;
 }
 </style>

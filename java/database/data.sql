@@ -1,28 +1,26 @@
 BEGIN TRANSACTION;
 
 INSERT INTO users (username,password_hash,role,first_name, last_name, DOB, phone_number,email_address) 
-VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'test', 'test', '1995-11-11', '1231231234','test@test.com');
+VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'Josh', 'Coffey', '1995-11-11', '1231231234','josh.coffey@cincysloths.com');
 
 INSERT INTO users (username,password_hash,role, first_name, last_name, DOB, phone_number,email_address) 
-VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'test2', 'test2', '1956-12-12', '1232345432', 'test2@test2.com');
+VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Nayilah', 'Roper', '2003-12-12', '1232345432', 'admin@cincysloths.com');
 
 INSERT INTO pets(pet_name, breed, color, is_vaccinated, sex, adoption_status, pet_description)
-VALUES ('Rocky', 'Normal Sloth', 'Black', true, 'Male', 'Available', 'Rocky is a sloth. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a');
+VALUES ('Rocky', 'Normal Sloth', 'Black', true, 'Male', 'Available', 'Rocky is very well behaved. He always finishes his dinner, and loves to take naps.');
 
 INSERT INTO pets(pet_name, DOB,  breed, color, is_vaccinated, sex, adoption_status, pet_description)
-VALUES ('Callisto','1997-10-24', 'Upside Down Sloth', 'Reddish-Brown', true, 'Female', 'Available', 'Callisto is a sloth.');
+VALUES ('Callisto','1997-10-24', 'Upside Down Sloth', 'Reddish-Brown', true, 'Female', 'Available', 'Callisto is very kind. She always shares her veggies and loves to snuggle.');
 
 INSERT INTO pets(pet_name,DOB, breed, color, is_vaccinated, sex, adoption_status, pet_description)
-VALUES ('Raisin','1996-1-1', 'Upside Down Sloth', 'Blonde', false, 'Male', 'Available', 'Raisin is a sloth.');
+VALUES ('Raisin','1996-1-1', 'Upside Down Sloth', 'Blonde', false, 'Male', 'Available', 'Raisin is as loyal as they come. He will follow you around like your own shaddow.');
 
 INSERT INTO pets(pet_name,DOB,  breed, color, is_vaccinated, sex, adoption_status, pet_description)
-VALUES ('Liane','2003-4-13', 'Upside Down Sloth', 'Blonde', true, 'Female', 'Available', 'Liane is a sloth.');
+VALUES ('Liane','2003-4-13', 'Upside Down Sloth', 'Blonde', true, 'Female', 'Available', 'Liane is such a sweetheart. She is always down for a cuddle.');
 
 INSERT INTO pets(pet_name,DOB,  breed, color, is_vaccinated, sex, adoption_status, pet_description)
-VALUES ('Lightning','2003-06-12', 'Upside Down Sloth', 'Reddish-Blonde', true, 'Male', 'Available', 'Lightning is a sloth.');
+VALUES ('Lightning','2003-06-12', 'Upside Down Sloth', 'Reddish-Blonde', true, 'Male', 'Available', 'Lightning is very playful. Lightning requires an active parent willing to keep up at his pace.');
 
-INSERT INTO pets(pet_name,DOB,breed,color,sex,adoption_status,is_vaccinated,entry_date,pet_description)
-VALUES('test name','1996-07-03','sloth','green','male','Available',true,'1997-07-03','this pet is not adopted');
 
 INSERT INTO photos(pet_id,source,description)
 VALUES(1,'https://i.imgur.com/7rhDPcZ.jpg','Rocky Photo 1');
@@ -54,38 +52,31 @@ VALUES(5,'https://i.imgur.com/ET3vUyM.jpg','Lightning Photo 1');
 INSERT INTO photos(pet_id,source,description)
 VALUES(5,'https://i.imgur.com/mM7JIG8.jpg','Lightning Photo 2');
 
-INSERT INTO photos(pet_id,description)
-VALUES(6,'this is a test sloth');
+
 
 INSERT INTO applications(application_date, status, first_name, last_name, DOB, phone_number, email_address)
-VALUES('2023-04-10', 'denied', 'joe', 'schmoe', '1997-10-23', '1231231234', 'jschmizzle@email.com');
+VALUES('2023-04-12', 'pending', 'Evan', 'Amezcua', '1992-10-01', '1234567890', 'evanA@email.com');
 
 INSERT INTO applications(application_date, status, first_name, last_name, DOB, phone_number, email_address)
-VALUES('2023-04-11', 'approved', 'chad', 'rad', '1995-04-15', '5849302937', 'chadrulz@email.com');
+VALUES('2023-04-12', 'pending', 'Carly', 'Trimboli', '1994-02-04', '2468101214', 'CoolCarly@email.com');
 
 INSERT INTO applications(application_date, status, first_name, last_name, DOB, phone_number, email_address)
-VALUES('2023-04-12', 'pending', 'trent', 'bent', '1992-10-01', '1234567890', 'tbent12@email.com');
+VALUES('2023-04-13', 'pending', 'Monika', 'Royal-Fischer', '1995-10-22', '3725100987', 'MonikaRulez@email.com');
 
 INSERT INTO applications(application_date, status, first_name, last_name, DOB, phone_number, email_address)
-VALUES('2023-04-12', 'pending', 'linda', 'schminda', '1994-02-04', '2468101214', 'contactscminda@email.com');
+VALUES('2023-04-13', 'pending', 'Robyn', 'Florentz', '1997-06-09', '0987123467', 'dontmesswithrobyn@email.com');
 
 INSERT INTO applications(application_date, status, first_name, last_name, DOB, phone_number, email_address)
-VALUES('2023-04-13', 'pending', 'kathy', 'taffy', '1995-10-22', '3725100987', 'kt1995@email.com');
+VALUES('2023-04-14', 'pending', 'Stefan', 'Kyntchev', '1992-12-11', '9871287650', 'Stefan182@email.com');
 
 INSERT INTO applications(application_date, status, first_name, last_name, DOB, phone_number, email_address)
-VALUES('2023-04-13', 'pending', 'barb', 'card', '1997-06-09', '0987123467', 'barb.card@email.com');
+VALUES('2023-04-14', 'pending', 'David', 'Pfaltzgraff-Carlson', '1997-09-25', '1245780243', 'contactDavid@email.com');
 
 INSERT INTO applications(application_date, status, first_name, last_name, DOB, phone_number, email_address)
-VALUES('2023-04-14', 'pending', 'ricky', 'licky', '1992-12-11', '9871287650', 'richardlicky@email.com');
+VALUES('2023-04-14', 'pending', 'Megan', 'Hunziker', '1992-01-02', '4512398736', 'Megan4ever@email.com');
 
 INSERT INTO applications(application_date, status, first_name, last_name, DOB, phone_number, email_address)
-VALUES('2023-04-14', 'pending', 'donnie', 'laundry', '1997-09-25', '1245780243', 'donniel182@email.com');
-
-INSERT INTO applications(application_date, status, first_name, last_name, DOB, phone_number, email_address)
-VALUES('2023-04-14', 'pending', 'bobert', 'roberts', '1992-01-02', '4512398736', 'bobroberts92@email.com');
-
-INSERT INTO applications(application_date, status, first_name, last_name, DOB, phone_number, email_address)
-VALUES('2023-04-15', 'pending', 'mike', 'levy', '1994-02-17', '0000000000', 'tecincymike@email.com');
+VALUES('2023-04-15', 'pending', 'Mike', 'Levy', '1994-02-17', '0000000000', 'tecincymike@email.com');
 
 
 COMMIT TRANSACTION;

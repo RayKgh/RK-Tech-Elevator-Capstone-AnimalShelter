@@ -17,7 +17,7 @@
         class="dark-item"
         v-if="toggleAdmin"
       >
-        Pending Applications
+        Applicants
       </router-link>
     </div>
 
@@ -100,7 +100,7 @@ export default {
 
 #dark-nav {
   display: flex;
-  width: 40%;
+  width: 45%;
   flex-direction: row-reverse;
   font-size: 25px;
   height: 100%;
