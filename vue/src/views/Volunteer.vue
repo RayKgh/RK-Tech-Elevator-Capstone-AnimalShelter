@@ -1,55 +1,92 @@
 <template>
   <div class="volunteer-page">
     <div class="volunteer">
-    <h1>Why Volunteer?</h1>
+      <h1>Why Volunteer?</h1>
 
-    <p> As a 100% volunteer run organization we are always looking for energetic and passionate folks who wish to give their time to help our cause. </p>
-  
-    <form @submit.prevent="submit">
-        <h2> Sign Up Today! </h2>
+      <p>
+        As a 100% volunteer run organization we are always looking for energetic
+        and passionate folks who wish to give their time to help our cause.
+      </p>
+
+      <form @submit.prevent="submit">
+        <h2>Sign Up Today!</h2>
 
         <div id="names">
           <div id="first-name">
             <label for="fname">First Name</label>
-            <input v-model="applicant.firstName" type="text" id="fname" name="fname" placeholder="Dolly" required>  
+            <input
+              v-model="applicant.firstName"
+              type="text"
+              id="fname"
+              name="fname"
+              placeholder="Dolly"
+              required
+            />
           </div>
 
           <div id="last-name">
             <label for="lname">Last name</label>
-            <input v-model="applicant.lastName" type="text" id="lname" name="lname" placeholder="Parton" required>
+            <input
+              v-model="applicant.lastName"
+              type="text"
+              id="lname"
+              name="lname"
+              placeholder="Parton"
+              required
+            />
           </div>
         </div>
 
-        <div id="email-div" class="input-box"> 
+        <div id="email-div" class="input-box">
           <label for="email">Email</label>
-          <input v-model="applicant.email" type="email" id="email" name="email" placeholder="DollyParton@email.com" required>
+          <input
+            v-model="applicant.email"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="DollyParton@email.com"
+            required
+          />
         </div>
 
         <div id="phone-div" class="input-box">
           <label for="phonenum">Phone</label>
-          <input v-model="applicant.phoneNum" type="tel" id="phonenum" name="phonenum"  maxlength="15" placeholder="9251234567" required> 
+          <input
+            v-model="applicant.phoneNum"
+            type="tel"
+            id="phonenum"
+            name="phonenum"
+            maxlength="15"
+            placeholder="9251234567"
+            required
+          />
         </div>
 
         <div id="bday-submit">
           <div id="bday-box">
             <label for="dob">Birthday</label>
-            <input v-model="applicant.dob" type="date" id="dob" name="dob" value="01/19/1946" required>
+            <input
+              v-model="applicant.dob"
+              type="date"
+              id="dob"
+              name="dob"
+              value="01/19/1946"
+              required
+            />
           </div>
 
           <div id="bday-btn">
-             <button type="submit" class="submitreg"> Submit </button>
+            <button type="submit" class="submitreg">Submit</button>
           </div>
 
-           <div role="alert" v-if="submitError" class="submit-error">
-              Your Sign-up form was unable to submit. Please try again Later.
+          <div role="alert" v-if="submitError" class="submit-error">
+            Your Sign-up form was unable to submit. Please try again Later.
           </div>
         </div>
-    </form>
-
-   
+      </form>
     </div>
 
-   <div class="signedup">
+    <div class="signedup">
       <h3>Already a volunteer?</h3>
       <button class="sign-in">
         <router-link :to="{ name: 'login' }" class="sign-in-link">
@@ -58,51 +95,75 @@
       </button>
     </div>
   </div>
-  
-
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-    name: 'volunteer',
-    data() {
-      return {
-        applicant: {
-          firstName: "",
-          lastName: "",
-          dob: "",
-          phoneNum: "",
-          email: ""
-        },
-        submitError: false,
-      };
-    },
-    methods: {
-      submit() {
-         axios.post('/volunteer', this.applicant)
+  name: "volunteer",
+  data() {
+    return {
+      applicant: {
+        firstName: "",
+        lastName: "",
+        dob: "",
+        phoneNum: "",
+        email: "",
+      },
+      submitError: false,
+    };
+  },
+  methods: {
+    submit() {
+      if (this.ageCalc < 18) {
+        alert("Need to be at least 18 years old to volunteer.");
+      } else if (this.applicant.phoneNum.length != 10) {
+        alert("Phone number should be 10 numbers.");
+      } else {
+        axios
+          .post("/volunteer", this.applicant)
           .then((response) => {
             if (response.status == 201) {
-              this.$router.push({name: "home"});
+              this.$router.push({ name: "home" });
             }
           })
           .catch((error) => {
-          const response = error.response;
+            const response = error.response;
 
-          if (response.status === 400) {
-            this.submitError = true;
-          }
-        });
-      } 
-    }
-       
-}
+            if (response.status === 400) {
+              this.submitError = true;
+            }
+          });
+      }
+    },
+  },
+  computed: {
+    ageCalc() {
+      if (this.applicant.dob != null) {
+        let birthDate = new Date(this.applicant.dob);
+        let birthDays =
+          birthDate.getDay() +
+          birthDate.getMonth() * 30 +
+          birthDate.getFullYear() * 365;
+        let nowDate = new Date();
+        let nowDays =
+          nowDate.getDay() +
+          nowDate.getMonth() * 30 +
+          nowDate.getFullYear() * 365;
+
+        let age = Math.floor((nowDays - birthDays) / 365);
+        return age;
+      } else {
+        return "No Birthday Given";
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
-
-.volunteer-page{
+.volunteer-page {
   display: flex;
   justify-content: space-between;
 }
@@ -111,10 +172,9 @@ export default {
   margin-top: 80px;
 }
 
-h1{
+h1 {
   font-size: 65px;
   margin: 20px 80px 0;
-  
 }
 
 p {
@@ -127,17 +187,15 @@ p {
 form {
   margin: 50px 100px 175px;
   width: 380px;
-  
-
 }
 
-h2{
+h2 {
   font-weight: 900;
   margin: 30px 0 0 0;
   text-align: center;
   font-size: 40px;
   text-transform: uppercase;
-  color: #59351F;
+  color: #59351f;
 }
 
 form * input {
@@ -149,11 +207,10 @@ form * input {
 }
 
 #names * input {
-  width:    180px;
-  
+  width: 180px;
 }
 
-label{
+label {
   font-size: 16px;
   color: #335137;
   margin-bottom: 0;
@@ -161,14 +218,12 @@ label{
   text-transform: uppercase;
 }
 
-
-input{
+input {
   font-size: 17px;
   color: #335137;
   font-weight: 300;
   outline: none;
   background-color: #f2ebe6;
-  
 }
 
 .input-box {
@@ -181,21 +236,18 @@ input{
   padding: 0 20px;
 }
 
-
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
 
-#names{
+#names {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-
 
 #names > div {
   display: flex;
@@ -207,7 +259,7 @@ button:focus {
   padding: 0 20px;
 }
 
-.signedup{
+.signedup {
   display: flex;
   flex-direction: column;
   font-weight: 800;
@@ -222,7 +274,7 @@ button:focus {
   align-items: flex-end;
 }
 
-.sign-in{
+.sign-in {
   border-radius: 50px;
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
@@ -234,13 +286,12 @@ button:focus {
   text-transform: uppercase;
 }
 
-.sign-in-link{
+.sign-in-link {
   font-weight: bold;
   color: #f2ebe6;
   text-decoration: none;
   font-weight: 800;
 }
-
 
 form > * {
   margin-bottom: 5px;
@@ -254,18 +305,14 @@ form > * {
   padding: 0 20px;
 }
 
-
-
-#bday-submit{
+#bday-submit {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-
-
-.submitreg{
-   border-radius: 50px;
+.submitreg {
+  border-radius: 50px;
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   background-color: #de854e;
@@ -277,13 +324,10 @@ form > * {
   text-transform: uppercase;
 }
 
-
 h3 {
   font-size: 50px;
   color: #f2ebe6;
   text-align: right;
   font-weight: 800;
 }
-
-
 </style>
