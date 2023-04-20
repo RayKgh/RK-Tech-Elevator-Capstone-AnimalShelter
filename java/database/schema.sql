@@ -33,12 +33,12 @@ CREATE TABLE users (
 
 CREATE TABLE pets(
 	pet_id SERIAL PRIMARY KEY,
-	pet_name varchar(20),
+	pet_name varchar(100),
 	DOB date,
-	breed varchar(20),
-	color varchar(20),
-	sex varchar(6),
-	adoption_status varchar(30) CHECK (adoption_status IN ('Available','Adopted')),
+	breed varchar(100),
+	color varchar(100),
+	sex varchar(100),
+	adoption_status varchar(100) CHECK (adoption_status IN ('Available','Adopted')),
 	is_vaccinated boolean,
 	entry_date date,
 	adoption_date date CONSTRAINT adoption_date_exists_only_if_adoption_status_is_adopted CHECK (
