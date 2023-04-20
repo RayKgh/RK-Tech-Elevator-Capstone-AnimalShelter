@@ -134,5 +134,7 @@ export default {
   width: 70px;
   height: 70px;
   align-self: center;
+  opacity: 0.7;
+  margin: 0 25px;
 }
 </style>

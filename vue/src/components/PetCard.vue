@@ -67,18 +67,23 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
 .image {
-  min-height: 50%;
-  max-height: 50%;
-  min-width: 100%;
   overflow: hidden;
+  /* background-color: red; */
+  margin: 3px auto;
 }
 
 .card {
-  width: 40vh;
-  height: 70vh;
+  width: 380px;
+  height: 520px;
   perspective: 1000px;
   margin: 10px;
+  color: #335137;
 }
 
 .inner {
@@ -142,10 +147,8 @@ export default {
 
 ul {
   list-style-type: none;
-  margin-top: 10px;
   align-self: flex-start;
   margin-left: 25px;
-  margin-bottom: 10px;
 }
 
 #bio {
@@ -154,7 +157,16 @@ ul {
   align-self: stretch;
   flex-wrap: wrap;
   overflow-y: auto;
-  margin-bottom: 10px;
+  margin: -0px auto;
+  align-items: center;
+}
+
+#bio p {
+  font-size: 27px;
+  font-weight: 600;
+  color: #335137;
+  margin: 0 30px;
+  margin-top: -30px;
 }
 
 ::-webkit-scrollbar {

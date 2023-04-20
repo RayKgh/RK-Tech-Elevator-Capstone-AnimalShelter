@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="adopt">
     <pet-catalog />
   </div>
 </template>
@@ -13,9 +13,12 @@ export default {
 };
 </script>
 
-    
 <style scoped>
-h1{
+h1 {
   margin: 0;
+}
+
+.adopt {
+  margin-top: 100px;
 }
 </style>
